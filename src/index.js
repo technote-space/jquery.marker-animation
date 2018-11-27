@@ -6,7 +6,8 @@ require('jquery-inview');
 
     $.fn.markerAnimation = function (...args) {
         return this.each(function () {
-            const target = $(this), namespace = 'markerAnimation';
+            const target = $(this);
+            const namespace = 'markerAnimation';
             const markerAnimationObj = {
                 op: {
                     "color": '#fe9',
@@ -14,6 +15,8 @@ require('jquery-inview');
                     "size": '.6em',
                     "width": '.5em',
                     "delay": 100,
+                    "proportional": false,
+                    "duration": 2000,
                     "speed": 10,
                     "easing": 'swing',
                     "once": true,
@@ -41,7 +44,7 @@ require('jquery-inview');
                                 'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)',
                                 'padding-right': $this.op.width
                             });
-                            const duration = Math.ceil(target.width() * 50 / Math.max(1, $this.op.speed));
+                            const duration = $this.op.proportional ? Math.ceil(target.width() * 40 / Math.max(1, $this.op.speed)) : $this.op.duration;
                             target.delay(Math.max(0, $this.op.delay)).animate({
                                 'background-position-x': '-100%'
                             }, duration, $this.op.easing, $this.op.callback);
