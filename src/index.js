@@ -11,16 +11,13 @@ require('jquery-inview');
             const markerAnimationObj = {
                 op: {
                     "color": '#fe9',
-                    "pos": '.7em',
-                    "size": '.6em',
-                    "width": '.5em',
-                    "delay": 100,
-                    "proportional": false,
-                    "duration": 2000,
-                    "speed": 10,
-                    "easing": 'swing',
-                    "once": true,
-                    "callback": null
+                    "pos": '0',
+                    "thickness": '.6em',
+                    "delay": '.1s',
+                    "duration": '2s',
+                    "function": 'ease',
+                    "font_weight": 'bold',
+                    "repeat": false
                 },
                 setOption: function (op) {
                     this.op = $.extend(this.op, op);
@@ -34,29 +31,31 @@ require('jquery-inview');
                 create: function (op) {
                     const $this = this;
                     this.setOption(op);
+                    const css = {
+                        'display': 'inline',
+                        'background-position': 'left 0 bottom ' + $this.op.pos,
+                        'background-size': '200% ' + $this.op.thickness,
+                        'background-repeat': 'repeat-x',
+                        'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)',
+                        'transition': 'background-position ' + $this.op.duration + ' ' + $this.op.function + ' ' + $this.op.delay
+                    };
+                    if ($this.op.font_weight) {
+                        css['font-weight'] = $this.op.font_weight;
+                    }
                     target.on('inview.' + namespace, function (event, isInView) {
                         if (isInView) {
                             target.stop(true, true).css({
-                                'display': 'inline-block',
-                                'background-position': '0 ' + $this.op.pos,
-                                'background-size': '200% ' + $this.op.size,
-                                'background-repeat': 'repeat-x',
-                                'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)',
-                                'padding-right': $this.op.width
+                                'background-position': 'left -100% bottom ' + $this.op.pos
                             });
-                            const duration = $this.op.proportional ? Math.ceil(target.width() * 40 / Math.max(1, $this.op.speed)) : $this.op.duration;
-                            target.delay(Math.max(0, $this.op.delay)).animate({
-                                'background-position-x': '-100%'
-                            }, duration, $this.op.easing, $this.op.callback);
-                            if ($this.op.once) {
+                            if (!$this.op.repeat) {
                                 $this.stop();
                             }
                         } else {
-                            if (!$this.op.once) {
+                            if ($this.op.repeat) {
                                 target.trigger("refresh." + namespace);
                             }
                         }
-                    }).data('inview', false);
+                    }).css(css).data('inview', false);
                 },
                 refresh: function () {
                     this.destroy();
