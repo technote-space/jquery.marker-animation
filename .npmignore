@@ -1,1 +1,4 @@
+.*
+**/webpack.config.js
 src/
+marker-animation.gif
