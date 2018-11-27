@@ -1,6 +1,6 @@
 # jQuery Marker Animation
 
-[![License: GPL v2+](https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
 
 蛍光ペンで塗るようなアニメーションを表示するjQueryプラグイン
 
