@@ -2,7 +2,7 @@
   "name": "jquery.marker-animation",
   "version": "1.0.1",
   "description": "Marker animation jQuery plugin",
-  "main": "jquery.marker-animation.js",
+  "main": "jquery.marker-animation.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "develop": "webpack --mode development",
