@@ -1,0 +1,30 @@
+const webpack = require('webpack');
+const p = require('./package');
+
+const banner = `${p.name} ${p.version} - ${p.description}\nCopyright (c) ${ new Date().getFullYear() } ${p.author} - ${p.homepage}\nLicense: ${p.license}`;
+
+const webpackConfig = {
+    'context': __dirname + '/src',
+    'entry': './index.js',
+    'output': {
+        'path': __dirname,
+        'filename': `${p.name}.min.js`,
+        'library': `markerAnimation`,
+        'libraryTarget': 'umd'
+    },
+    'module': {
+        'loaders': [{
+            'test': /\.js$/,
+            'exclude': /node_modules/,
+            'loader': 'babel'
+        }]
+    },
+    externals: {
+        jquery: 'jQuery'
+    },
+    'plugins': [
+        new webpack.BannerPlugin(banner)
+    ]
+};
+
+module.exports = webpackConfig;
