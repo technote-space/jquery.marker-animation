@@ -1,4 +1,6 @@
 .*
 **/webpack.config.js
 src/
+node_modules/
+v8-compile-cache-0/
 marker-animation.gif
