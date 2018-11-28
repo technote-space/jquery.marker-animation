@@ -21,7 +21,7 @@
     "url": "https://github.com/technote-space/jquery.marker-animation/issues"
   },
   "homepage": "https://github.com/technote-space/jquery.marker-animation#readme",
-  "license": "GPL v3",
+  "license": "GPL-3.0",
   "babel": {
     "presets": [
       "es2015"
