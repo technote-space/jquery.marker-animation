@@ -21,8 +21,8 @@ $.fn.markerAnimation = function (...args) {
             },
             destroy: function () {
                 target.css({
-                    "background": '',
-                    'padding-right': ''
+                    'background': '',
+                    'transition': ''
                 });
             },
             create: function (op) {
