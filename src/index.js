@@ -33,8 +33,7 @@ $.fn.markerAnimation = function (...args) {
                     'background-position': 'left 0 bottom ' + $this.op.pos,
                     'background-size': '200% ' + $this.op.thickness,
                     'background-repeat': 'repeat-x',
-                    'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)',
-                    'transition': 'background-position ' + $this.op.duration + ' ' + $this.op.function + ' ' + $this.op.delay
+                    'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)'
                 };
                 if ($this.op.font_weight) {
                     css['font-weight'] = $this.op.font_weight;
@@ -42,6 +41,7 @@ $.fn.markerAnimation = function (...args) {
                 target.on('inview.' + namespace, function (event, isInView) {
                     if (isInView) {
                         target.stop(true, true).css({
+                            'transition': 'background-position ' + $this.op.duration + ' ' + $this.op.function + ' ' + $this.op.delay,
                             'background-position': 'left -100% bottom ' + $this.op.pos
                         });
                         if (!$this.op.repeat) {
