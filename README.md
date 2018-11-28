@@ -69,4 +69,4 @@ $('.marker-animation').markerAnimation({
     repeat: false
 });
 ```
-trueにすると一度画面外に外れ再び表示された際に再度アニメーションが実行されます。
+trueにすると一度画面から外れて再び表示された際に再度アニメーションが実行されます。
