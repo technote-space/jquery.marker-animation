@@ -38,7 +38,7 @@ $.fn.markerAnimation = function (...args) {
                 if ($this.op.font_weight) {
                     css['font-weight'] = $this.op.font_weight;
                 }
-                target.on('inview.' + namespace, function (event, isInView) {
+                target.data('inview', false).on('inview.' + namespace, function (event, isInView) {
                     if (isInView) {
                         target.stop(true, true).css({
                             'transition': 'background-position ' + $this.op.duration + ' ' + $this.op.function + ' ' + $this.op.delay,
@@ -52,7 +52,7 @@ $.fn.markerAnimation = function (...args) {
                             target.trigger("refresh." + namespace);
                         }
                     }
-                }).css(css).attr('data-inview', false).attr('data-marker_animation', true);
+                }).css(css).attr('data-marker_animation', true);
             },
             refresh: function () {
                 this.destroy();
@@ -72,13 +72,14 @@ $.fn.markerAnimation = function (...args) {
             target.trigger("refresh." + namespace);
         } else {
             if (target.attr('data-marker_animation')) {
-                target.trigger("destroy." + namespace);
+                markerAnimationObj.destroy();
+                markerAnimationObj.removeEvent();
             }
             markerAnimationObj.create(args[0]);
 
             target.on("destroy." + namespace, function () {
-                markerAnimationObj.removeEvent();
                 markerAnimationObj.destroy();
+                markerAnimationObj.removeEvent();
             }).on("refresh." + namespace, function () {
                 markerAnimationObj.refresh();
             });
