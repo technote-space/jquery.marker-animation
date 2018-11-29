@@ -23,7 +23,7 @@ $.fn.markerAnimation = function (...args) {
                 target.css({
                     'background': '',
                     'transition': ''
-                });
+                }).attr('data-marker_animation', false);
             },
             create: function (op) {
                 const $this = this;
@@ -52,7 +52,7 @@ $.fn.markerAnimation = function (...args) {
                             target.trigger("refresh." + namespace);
                         }
                     }
-                }).css(css).data('inview', false);
+                }).css(css).attr('data-inview', false).attr('data-marker_animation', true);
             },
             refresh: function () {
                 this.destroy();
@@ -71,6 +71,9 @@ $.fn.markerAnimation = function (...args) {
         } else if (typeof args[0] === "string" && args[0] === "refresh") {
             target.trigger("refresh." + namespace);
         } else {
+            if (target.attr('data-marker_animation')) {
+                target.trigger("destroy." + namespace);
+            }
             markerAnimationObj.create(args[0]);
 
             target.on("destroy." + namespace, function () {
