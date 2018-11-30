@@ -20,6 +20,10 @@ https://www.npmjs.com/package/jquery.marker-animation
 npm install --save jquery.marker-animation
 ```
 
+### WordPressで利用
+プラグインとして利用できるようにしました。  
+[marker-animation](https://github.com/technote-space/marker-animation)
+
 ## 基本的な使用方法
 ```
 文章文章文章<span class="marker-animation">強調したい文字</span>文章文章文章文章
