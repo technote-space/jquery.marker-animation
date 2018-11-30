@@ -17,7 +17,7 @@ $.fn.markerAnimation = function (...args) {
                 "repeat": false
             },
             setOption: function (op) {
-                this.op = $.extend(this.op, op);
+                $.extend(this.op, op);
             },
             destroy: function () {
                 target.css({
