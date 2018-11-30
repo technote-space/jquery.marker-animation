@@ -9,7 +9,8 @@ $.fn.markerAnimation = function (...args) {
         const markerAnimationObj = {
             op: {
                 "color": '#fe9',
-                "pos": '0',
+                "position_bottom": '0',
+                "padding_bottom": '.1em',
                 "thickness": '.6em',
                 "delay": '.1s',
                 "duration": '2s',
@@ -23,6 +24,7 @@ $.fn.markerAnimation = function (...args) {
             destroy: function () {
                 target.css({
                     'background': '',
+                    'padding-bottom': '',
                     'transition': ''
                 }).attr('data-marker_animation', false);
             },
@@ -31,10 +33,11 @@ $.fn.markerAnimation = function (...args) {
                 this.setOption(op);
                 const css = {
                     'display': 'inline',
-                    'background-position': 'left 0 bottom ' + $this.op.pos,
+                    'background-position': 'left 0 bottom ' + $this.op.position_bottom,
                     'background-size': '200% ' + $this.op.thickness,
                     'background-repeat': 'repeat-x',
-                    'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)'
+                    'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)',
+                    'padding-bottom': $this.op.padding_bottom
                 };
                 if ($this.op.font_weight) {
                     css['font-weight'] = $this.op.font_weight;
@@ -43,7 +46,7 @@ $.fn.markerAnimation = function (...args) {
                     if (isInView) {
                         target.stop(true, true).css({
                             'transition': 'background-position ' + $this.op.duration + ' ' + $this.op.function + ' ' + $this.op.delay,
-                            'background-position': 'left -100% bottom ' + $this.op.pos
+                            'background-position': 'left -100% bottom ' + $this.op.position_bottom
                         });
                         if (!$this.op.repeat) {
                             $this.stop();
