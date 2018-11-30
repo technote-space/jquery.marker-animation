@@ -5,6 +5,7 @@ $.fn.markerAnimation = function (...args) {
     return this.each(function () {
         const target = $(this);
         const namespace = 'markerAnimation';
+        const override_prefix = 'ma_';
         const markerAnimationObj = {
             op: {
                 "color": '#fe9',
@@ -75,7 +76,15 @@ $.fn.markerAnimation = function (...args) {
                 markerAnimationObj.destroy();
                 markerAnimationObj.removeEvent();
             }
-            markerAnimationObj.create(args[0]);
+
+            const options = $.extend({}, args[0]);
+            Object.keys(markerAnimationObj.op).forEach(function (key) {
+                const data = target.data(override_prefix + key);
+                if (undefined !== data) {
+                    options[key] = data;
+                }
+            });
+            markerAnimationObj.create(options);
 
             target.on("destroy." + namespace, function () {
                 markerAnimationObj.destroy();
