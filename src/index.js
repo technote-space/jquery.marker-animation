@@ -111,6 +111,10 @@ $.fn.markerAnimation = function (...args) {
             }).on('refresh.' + namespace, function () {
                 markerAnimationObj.refresh();
             });
+
+            if (options.test) {
+                target[0].markerAnimationObj = markerAnimationObj;
+            }
         }
     });
 };
