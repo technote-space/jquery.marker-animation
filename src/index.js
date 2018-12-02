@@ -5,18 +5,18 @@ $.fn.markerAnimation = function (...args) {
     return this.each(function () {
         const target = $(this);
         const namespace = 'markerAnimation';
-        const override_prefix = 'ma_';
+        const overridePrefix = 'ma_';
         const markerAnimationObj = {
             op: {
-                "color": '#fe9',
-                "position_bottom": '0',
-                "padding_bottom": '.1em',
-                "thickness": '.6em',
-                "delay": '.1s',
-                "duration": '2s',
-                "function": 'ease',
-                "font_weight": 'bold',
-                "repeat": false
+                'color': '#fe9',
+                'position_bottom': '0',
+                'padding_bottom': '.1em',
+                'thickness': '.6em',
+                'delay': '.1s',
+                'duration': '2s',
+                'function': 'ease',
+                'font_weight': 'bold',
+                'repeat': false
             },
             setOption: function (op) {
                 $.extend(this.op, op);
@@ -44,17 +44,9 @@ $.fn.markerAnimation = function (...args) {
                 }
                 target.data('inview', false).on('inview.' + namespace, function (event, isInView) {
                     if (isInView) {
-                        target.stop(true, true).css({
-                            'transition': 'background-position ' + $this.op.duration + ' ' + $this.op.function + ' ' + $this.op.delay,
-                            'background-position': 'left -100% bottom ' + $this.op.position_bottom
-                        });
-                        if (!$this.op.repeat) {
-                            $this.stop();
-                        }
+                        $this.onInView();
                     } else {
-                        if ($this.op.repeat) {
-                            target.trigger("refresh." + namespace);
-                        }
+                        $this.offInView();
                     }
                 }).css(css).attr('data-marker_animation', true);
             },
@@ -64,16 +56,30 @@ $.fn.markerAnimation = function (...args) {
                 this.create();
             },
             removeEvent: function () {
-                target.off("." + namespace);
+                target.off('.' + namespace);
             },
             stop: function () {
                 target.off('inview.' + namespace);
+            },
+            onInView: function () {
+                target.stop(true, true).css({
+                    'transition': 'background-position ' + this.op.duration + ' ' + this.op.function + ' ' + this.op.delay,
+                    'background-position': 'left -100% bottom ' + this.op.position_bottom
+                });
+                if (!this.op.repeat) {
+                    this.stop();
+                }
+            },
+            offInView: function () {
+                if (this.op.repeat) {
+                    target.trigger('refresh.' + namespace);
+                }
             }
         };
-        if (typeof args[0] === "string" && args[0] === "destroy") {
-            target.trigger("destroy." + namespace);
-        } else if (typeof args[0] === "string" && args[0] === "refresh") {
-            target.trigger("refresh." + namespace);
+        if (typeof args[0] === 'string' && args[0] === 'destroy') {
+            target.trigger('destroy.' + namespace);
+        } else if (typeof args[0] === 'string' && args[0] === 'refresh') {
+            target.trigger('refresh.' + namespace);
         } else {
             if (target.attr('data-marker_animation')) {
                 markerAnimationObj.destroy();
@@ -82,17 +88,17 @@ $.fn.markerAnimation = function (...args) {
 
             const options = $.extend({}, args[0]);
             Object.keys(markerAnimationObj.op).forEach(function (key) {
-                const data = target.data(override_prefix + key);
+                const data = target.data(overridePrefix + key);
                 if (undefined !== data) {
                     options[key] = data;
                 }
             });
             markerAnimationObj.create(options);
 
-            target.on("destroy." + namespace, function () {
+            target.on('destroy.' + namespace, function () {
                 markerAnimationObj.destroy();
                 markerAnimationObj.removeEvent();
-            }).on("refresh." + namespace, function () {
+            }).on('refresh.' + namespace, function () {
                 markerAnimationObj.refresh();
             });
         }
