@@ -18,15 +18,22 @@ $.fn.markerAnimation = function (...args) {
                 "font_weight": 'bold',
                 "repeat": false
             },
+            resetKeys: [
+                'background',
+                'padding-bottom',
+                'font-weight',
+                'transition'
+            ],
+            resetValues: {},
             setOption: function (op) {
                 $.extend(this.op, op);
             },
             destroy: function () {
-                target.css({
-                    'background': '',
-                    'padding-bottom': '',
-                    'transition': ''
-                }).attr('data-marker_animation', false);
+                const $this = this;
+                $this.resetKeys.forEach(function (key) {
+                    target.css(key, $this.resetValues[key]);
+                });
+                target.attr('data-marker_animation', false);
             },
             create: function (op) {
                 const $this = this;
@@ -42,6 +49,9 @@ $.fn.markerAnimation = function (...args) {
                 if ($this.op.font_weight) {
                     css['font-weight'] = $this.op.font_weight;
                 }
+                $this.resetKeys.forEach(function (key) {
+                    $this.resetValues[key] = target.css(key);
+                });
                 target.data('inview', false).on('inview.' + namespace, function (event, isInView) {
                     if (isInView) {
                         target.stop(true, true).css({
