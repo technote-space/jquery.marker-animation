@@ -24,15 +24,17 @@ $.fn.markerAnimation = function (...args) {
                 'font-weight',
                 'transition'
             ],
-            resetValues: {},
             setOption: function (op) {
                 $.extend(this.op, op);
             },
             destroy: function () {
                 const $this = this;
-                $this.resetKeys.forEach(function (key) {
-                    target.css(key, $this.resetValues[key]);
-                });
+                if (target[0].resetValues) {
+                    $this.resetKeys.forEach(function (key) {
+                        target.css(key, target[0].resetValues[key]);
+                    });
+                    target[0].resetValues = null;
+                }
                 target.attr('data-marker_animation', false);
             },
             create: function (op) {
@@ -49,8 +51,9 @@ $.fn.markerAnimation = function (...args) {
                 if ($this.op.font_weight) {
                     css['font-weight'] = $this.op.font_weight;
                 }
+                target[0].resetValues = {};
                 $this.resetKeys.forEach(function (key) {
-                    $this.resetValues[key] = target.css(key);
+                    target[0].resetValues[key] = target.css(key);
                 });
                 target.data('inview', false).on('inview.' + namespace, function (event, isInView) {
                     if (isInView) {
