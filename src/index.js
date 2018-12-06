@@ -45,7 +45,8 @@ $.fn.markerAnimation = function (...args) {
                 const $this = this;
                 this.setOption(op);
                 let css = {
-                    'display': 'inline',
+                    'display': 'inline-block',
+                    'line-height': '1em',
                     'background-position': 'left 0 bottom ' + $this.op.position_bottom,
                     'background-size': '200% ' + $this.op.thickness,
                     'background-repeat': 'repeat-x',
