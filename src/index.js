@@ -16,13 +16,17 @@ $.fn.markerAnimation = function (...args) {
                 'duration': '2s',
                 'function': 'ease',
                 'font_weight': 'bold',
-                'repeat': false
+                'repeat': false,
+                'cssFilter': function (css) {
+                    return css;
+                }
             },
             resetKeys: [
                 'background',
                 'padding-bottom',
                 'font-weight',
-                'transition'
+                'transition',
+                'line-height'
             ],
             setOption: function (op) {
                 $.extend(this.op, op);
@@ -40,7 +44,7 @@ $.fn.markerAnimation = function (...args) {
             create: function (op) {
                 const $this = this;
                 this.setOption(op);
-                const css = {
+                let css = {
                     'display': 'inline',
                     'background-position': 'left 0 bottom ' + $this.op.position_bottom,
                     'background-size': '200% ' + $this.op.thickness,
@@ -55,6 +59,7 @@ $.fn.markerAnimation = function (...args) {
                 $this.resetKeys.forEach(function (key) {
                     target[0].resetValues[key] = target.css(key);
                 });
+                css = $this.op.cssFilter(css);
                 target.data('inview', false).on('inview.' + namespace, function (event, isInView) {
                     if (isInView) {
                         $this.onInView();

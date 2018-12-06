@@ -93,3 +93,26 @@ describe('destroy test', function () {
         });
     });
 });
+
+describe('filter css', function () {
+    'use strict';
+    it('css', function () {
+        const filter = {
+            'font-weight': 100,
+            'color': 'blue'
+        };
+        const $target = $('#marker-animation4');
+        $target.markerAnimation({
+            'cssFilter': function (css) {
+                Object.keys(filter).forEach(function (key) {
+                    css[key] = filter[key];
+                });
+                return css;
+            }
+        });
+        Object.keys(filter).forEach(function (key) {
+            assert.equal($target.css(key), filter[key]);
+        });
+        $target.markerAnimation('destroy');
+    });
+});
