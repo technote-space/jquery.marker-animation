@@ -22,7 +22,10 @@ npm install --save jquery.marker-animation
 
 ### WordPressで利用
 プラグインとして利用できるようにしました。  
-[marker-animation](https://github.com/technote-space/marker-animation)
+
+[WordPress](https://ja.wordpress.org/plugins/marker-animation/)
+
+[GitHub](https://github.com/technote-space/marker-animation)
 
 ## 基本的な使用方法
 ```
