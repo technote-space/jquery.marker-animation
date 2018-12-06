@@ -9,8 +9,7 @@ $.fn.markerAnimation = function (...args) {
         const markerAnimationObj = {
             op: {
                 'color': '#fe9',
-                'position_bottom': '0',
-                'padding_bottom': '.1em',
+                'padding_bottom': '.6em',
                 'thickness': '.6em',
                 'delay': '.1s',
                 'duration': '2s',
@@ -45,7 +44,7 @@ $.fn.markerAnimation = function (...args) {
                 this.setOption(op);
                 let css = {
                     'display': 'inline',
-                    'background-position': 'left 0 bottom ' + $this.op.position_bottom,
+                    'background-position': 'left 0 center',
                     'background-size': '200% ' + $this.op.thickness,
                     'background-repeat': 'repeat-x',
                     'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)',
@@ -81,7 +80,7 @@ $.fn.markerAnimation = function (...args) {
             onInView: function () {
                 target.stop(true, true).css({
                     'transition': 'background-position ' + this.op.duration + ' ' + this.op.function + ' ' + this.op.delay,
-                    'background-position': 'left -100% bottom ' + this.op.position_bottom
+                    'background-position': 'left -100% center'
                 });
                 if (!this.op.repeat) {
                     this.stop();
