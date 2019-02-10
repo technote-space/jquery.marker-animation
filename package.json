@@ -1,6 +1,6 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Marker animation jQuery plugin",
   "main": "jquery.marker-animation.min.js",
   "scripts": {
@@ -19,12 +19,12 @@
     "jquery-plugin",
     "marker animation"
   ],
-  "author": "technote",
+  "author": "technote-space",
   "bugs": {
     "url": "https://github.com/technote-space/jquery.marker-animation/issues"
   },
   "homepage": "https://github.com/technote-space/jquery.marker-animation#readme",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "dependencies": {
     "jquery-inview": "^1.1.2"
   },

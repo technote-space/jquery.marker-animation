@@ -58,13 +58,19 @@ $.fn.markerAnimation = function (...args) {
                     target[0].resetValues[key] = target.css(key);
                 });
                 css = $this.op.cssFilter(css);
-                target.data('inview', false).on('inview.' + namespace, function (event, isInView) {
-                    if (isInView) {
-                        $this.onInView();
-                    } else {
-                        $this.offInView();
-                    }
-                }).css(css).attr('data-marker_animation', true);
+                if ('0s' === $this.op.delay && '0s' === $this.op.duration) {
+                    target.css(css).css({
+                        'background-position': 'left -100% center'
+                    }).attr('data-marker_animation', true);
+                } else {
+                    target.data('inview', false).on('inview.' + namespace, function (event, isInView) {
+                        if (isInView) {
+                            $this.onInView();
+                        } else {
+                            $this.offInView();
+                        }
+                    }).css(css).attr('data-marker_animation', true);
+                }
             },
             refresh: function () {
                 this.destroy();
@@ -107,6 +113,16 @@ $.fn.markerAnimation = function (...args) {
                 const data = target.data(overridePrefix + key);
                 if (undefined !== data) {
                     options[key] = data;
+                }
+                if ('string' === typeof options[key]) {
+                    options[key] = options[key].trim();
+                    if ('delay' === key || 'duration' === key) {
+                        if (!/^-?\d*\.?\d+m?s$/.test(options[key])) {
+                            options[key] = '0s';
+                        } else if (/^-?0?\.?0+m?s$/.test(options[key])) {
+                            options[key] = '0s';
+                        }
+                    }
                 }
             });
             markerAnimationObj.create(options);
