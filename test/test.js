@@ -51,7 +51,7 @@ describe('option test', function () {
         const $target = $('#marker-animation2')
             .data('ma_color', 'blue')
             .data('ma_thickness', '0.5em')
-            .data('ma_duration', '20s')
+            .data('ma_duration', '20.5s')
             .data('ma_font_weight', 'normal')
             .data('ma_repeat', false);
         $target.markerAnimation({
@@ -65,9 +65,33 @@ describe('option test', function () {
         const param = $target.get(0).markerAnimationObj;
         assert.equal(param.op.color, 'blue');
         assert.equal(param.op.thickness, '0.5em');
-        assert.equal(param.op.duration, '20s');
+        assert.equal(param.op.duration, '20.5s');
         assert.equal(param.op.font_weight, 'normal');
         assert.equal(param.op.repeat, false);
+        $target.markerAnimation('destroy');
+    });
+    it('time option', function () {
+        const $target = $('#marker-animation3');
+        $target.markerAnimation({
+            'delay': ' 0s0',
+            'duration': '-0ms ',
+            'test': true
+        });
+        const param = $target.get(0).markerAnimationObj;
+        assert.equal(param.op.delay, '0s');
+        assert.equal(param.op.duration, '0s');
+        $target.markerAnimation('destroy');
+    });
+    it('time option2', function () {
+        const $target = $('#marker-animation4');
+        $target.markerAnimation({
+            'delay': ' .0s ',
+            'duration': '-0.0ms',
+            'test': true
+        });
+        const param = $target.get(0).markerAnimationObj;
+        assert.equal(param.op.delay, '0s');
+        assert.equal(param.op.duration, '0s');
         $target.markerAnimation('destroy');
     });
 });
