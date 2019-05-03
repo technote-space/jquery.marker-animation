@@ -5,9 +5,9 @@
   "main": "jquery.marker-animation.min.js",
   "scripts": {
     "test": "npm run lint && npm run cover",
-    "lint": "./node_modules/eslint/bin/eslint.js src/*.js",
-    "cover": "NODE_ENV=test ./node_modules/istanbul/lib/cli.js cover --report text ./node_modules/mocha/bin/_mocha",
-    "mocha": "NODE_ENV=test ./node_modules/mocha/bin/mocha",
+    "lint": "eslint src/*.js",
+    "cover": "NODE_ENV=test istanbul cover --report text _mocha",
+    "mocha": "NODE_ENV=test mocha",
     "develop": "webpack --mode development",
     "build": "webpack --mode production"
   },
