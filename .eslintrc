@@ -97,11 +97,14 @@
     ],
     "indent": [
       "error",
-      4
+      "tab",
+      {
+        "MemberExpression": "off"
+      }
     ],
     "space-before-function-paren": [
       "error",
-      "always"
+      "never"
     ],
     "space-before-blocks": "error",
     "prefer-const": "error",
@@ -129,6 +132,9 @@
     ]
   },
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
   }
 }
