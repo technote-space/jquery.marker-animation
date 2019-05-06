@@ -35,6 +35,7 @@ describe( 'option test', function() {
 			'duration': '10s',
 			'font_weight': null,
 			'repeat': true,
+			'stripe': true,
 			'test': true,
 		} );
 		const param = $target[ 0 ].markerAnimationObj;
@@ -43,6 +44,7 @@ describe( 'option test', function() {
 		assert.strictEqual( param.op.duration, '10s' );
 		assert.strictEqual( param.op.font_weight, null );
 		assert.strictEqual( param.op.repeat, true );
+		assert.strictEqual( param.op.stripe, true );
 		$target.markerAnimation( 'destroy' );
 	} );
 	it( 'override options', function() {
@@ -51,13 +53,15 @@ describe( 'option test', function() {
 		.data( 'ma_thickness', '0.5em' )
 		.data( 'ma_duration', '20.5s' )
 		.data( 'ma_font_weight', 'normal' )
-		.data( 'ma_repeat', false );
+		.data( 'ma_repeat', false )
+		.data( 'ma_stripe', false );
 		$target.markerAnimation( {
 			'color': 'red',
 			'thickness': '0.3em',
 			'duration': '10s',
 			'font_weight': null,
 			'repeat': true,
+			'stripe': true,
 			'test': true,
 		} );
 		const param = $target[ 0 ].markerAnimationObj;
@@ -66,6 +70,7 @@ describe( 'option test', function() {
 		assert.strictEqual( param.op.duration, '20.5s' );
 		assert.strictEqual( param.op.font_weight, 'normal' );
 		assert.strictEqual( param.op.repeat, false );
+		assert.strictEqual( param.op.stripe, false );
 		$target.markerAnimation( 'destroy' );
 	} );
 	it( 'time option', function() {

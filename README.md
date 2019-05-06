@@ -77,3 +77,11 @@ $('.marker-animation').markerAnimation({
 });
 ```
 trueにすると一度画面から外れて再び表示された際に再度アニメーションが実行されます。
+### stripe
+ストライプデザインにするかどうかを指定
+```
+$('.marker-animation').markerAnimation({
+    stripe: false
+});
+```
+アニメーションさせると見にくいので、`duration` と `delay` を `0` にしたほうがいいです。 

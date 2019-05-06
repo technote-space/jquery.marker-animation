@@ -16,6 +16,7 @@ $.fn.markerAnimation = function( ...args ) {
 				'function': 'ease',
 				'font_weight': 'bold',
 				'repeat': false,
+				'stripe': false,
 				'cssFilter': function( css ) {
 					return css;
 				},
@@ -45,11 +46,17 @@ $.fn.markerAnimation = function( ...args ) {
 				let css = {
 					'display': 'inline',
 					'background-position': 'left 0 center',
-					'background-size': '200% ' + $this.op.thickness,
-					'background-repeat': 'repeat-x',
-					'background-image': 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)',
 					'padding-bottom': $this.op.padding_bottom,
 				};
+				if ( $this.op.stripe ) {
+					css [ 'background-size' ] = '0 ' + $this.op.thickness;
+					css [ 'background-repeat' ] = 'no-repeat';
+					css[ 'background-image' ] = 'repeating-linear-gradient(-45deg, ' + $this.op.color + ', ' + $this.op.color + ' 2px,transparent 2px,transparent 4px)';
+				} else {
+					css[ 'background-size' ] = '200% ' + $this.op.thickness;
+					css[ 'background-repeat' ] = 'repeat-x';
+					css[ 'background-image' ] = 'linear-gradient(to right, rgba(255,255,255,0) 50%, ' + $this.op.color + ' 50%)';
+				}
 				if ( $this.op.font_weight ) {
 					css[ 'font-weight' ] = $this.op.font_weight;
 				}
@@ -59,9 +66,15 @@ $.fn.markerAnimation = function( ...args ) {
 				} );
 				css = $this.op.cssFilter( css );
 				if ( '0s' === $this.op.delay && '0s' === $this.op.duration ) {
-					target.css( css ).css( {
-						'background-position': 'left -100% center',
-					} ).attr( 'data-marker_animation', true );
+					if ( $this.op.stripe ) {
+						target.css( css ).css( {
+							'background-size': '100% ' + $this.op.thickness,
+						} ).attr( 'data-marker_animation', true );
+					} else {
+						target.css( css ).css( {
+							'background-position': 'left -100% center',
+						} ).attr( 'data-marker_animation', true );
+					}
 				} else {
 					target.data( 'inview', false ).on( 'inview.' + namespace, function( event, isInView ) {
 						if ( isInView ) {
@@ -84,10 +97,16 @@ $.fn.markerAnimation = function( ...args ) {
 				target.off( 'inview.' + namespace );
 			},
 			onInView: function() {
-				target.stop( true, true ).css( {
-					'transition': 'background-position ' + this.op.duration + ' ' + this.op.function + ' ' + this.op.delay,
-					'background-position': 'left -100% center',
-				} );
+				const $this = this;
+				const css = {};
+				if ( $this.op.stripe ) {
+					css[ 'transition' ] = 'background-size ' + this.op.duration + ' ' + this.op.function + ' ' + this.op.delay;
+					css[ 'background-size' ] = '100% ' + $this.op.thickness;
+				} else {
+					css[ 'transition' ] = 'background-position ' + this.op.duration + ' ' + this.op.function + ' ' + this.op.delay;
+					css[ 'background-position' ] = 'left -100% center';
+				}
+				target.stop( true, true ).css( css );
 				if ( ! this.op.repeat ) {
 					this.stop();
 				}
