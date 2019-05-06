@@ -60,8 +60,15 @@ $('.marker-animation').markerAnimation({
     duration: '2s'
 });
 ```
+### delay
+マーカーを塗るのを開始するまでの時間を指定
+```
+$('.marker-animation').markerAnimation({
+    duration: '.1s'
+});
+```
 ### font_weight
-文字の太さを指定します。
+文字の太さを指定
 ```
 $('.marker-animation').markerAnimation({
     font_weight: 'bold'
@@ -70,7 +77,7 @@ $('.marker-animation').markerAnimation({
 デフォルトは太字です。  
 太字にしない場合はnullを設定してください。
 ### repeat
-アニメーションを繰り返すかどうかを指定します。
+アニメーションを繰り返すかどうかを指定
 ```
 $('.marker-animation').markerAnimation({
     repeat: false
