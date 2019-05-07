@@ -91,4 +91,4 @@ $('.marker-animation').markerAnimation({
     stripe: false
 });
 ```
-アニメーションさせると見にくいので、`duration` と `delay` を `0` にしたほうがいいです。 
+これが `true` の場合はアニメーションなしの動作になります。

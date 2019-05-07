@@ -67,16 +67,14 @@ $.fn.markerAnimation = function( ...args ) {
 					target[ 0 ].resetValues[ key ] = target.css( key );
 				} );
 				css = $this.op.cssFilter( css );
-				if ( '0s' === $this.op.delay && '0s' === $this.op.duration ) {
-					if ( $this.op.stripe ) {
-						target.css( css ).css( {
-							'background-size': '100% ' + $this.op.thickness,
-						} ).attr( 'data-marker_animation', true );
-					} else {
-						target.css( css ).css( {
-							'background-position': 'left -100% center',
-						} ).attr( 'data-marker_animation', true );
-					}
+				if ( $this.op.stripe ) {
+					target.css( css ).css( {
+						'background-size': '100% ' + $this.op.thickness,
+					} ).attr( 'data-marker_animation', true );
+				} else if ( '0s' === $this.op.delay && '0s' === $this.op.duration ) {
+					target.css( css ).css( {
+						'background-position': 'left -100% center',
+					} ).attr( 'data-marker_animation', true );
 				} else {
 					target.data( 'inview', false ).on( 'inview.' + namespace, function( event, isInView ) {
 						if ( isInView ) {
@@ -99,16 +97,10 @@ $.fn.markerAnimation = function( ...args ) {
 				target.off( 'inview.' + namespace );
 			},
 			onInView: function() {
-				const $this = this;
-				const css = {};
-				if ( $this.op.stripe ) {
-					css[ 'transition' ] = 'background-size ' + this.op.duration + ' ' + this.op.function + ' ' + this.op.delay;
-					css[ 'background-size' ] = '100% ' + $this.op.thickness;
-				} else {
-					css[ 'transition' ] = 'background-position ' + this.op.duration + ' ' + this.op.function + ' ' + this.op.delay;
-					css[ 'background-position' ] = 'left -100% center';
-				}
-				target.stop( true, true ).css( css );
+				target.stop( true, true ).css( {
+					'transition': 'background-position ' + this.op.duration + ' ' + this.op.function + ' ' + this.op.delay,
+					'background-position': 'left -100% center',
+				} );
 				if ( ! this.op.repeat ) {
 					this.stop();
 				}
