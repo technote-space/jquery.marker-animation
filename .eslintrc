@@ -65,7 +65,7 @@
     "complexity": [
       "error",
       {
-        "maximum": 8
+        "maximum": 10
       }
     ],
     "curly": "error",
@@ -133,8 +133,6 @@
   },
   "parserOptions": {
     "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+    "ecmaVersion": 2018
   }
 }

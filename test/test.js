@@ -36,6 +36,7 @@ describe( 'option test', function() {
 			'font_weight': null,
 			'repeat': true,
 			'stripe': true,
+			'stripe_thickness': 'test',
 			'test': true,
 		} );
 		const param = $target[ 0 ].markerAnimationObj;
@@ -45,6 +46,8 @@ describe( 'option test', function() {
 		assert.strictEqual( param.op.font_weight, null );
 		assert.strictEqual( param.op.repeat, true );
 		assert.strictEqual( param.op.stripe, true );
+		// eslint-disable-next-line no-magic-numbers
+		assert.strictEqual( param.op.stripe_thickness, 2 );
 		$target.markerAnimation( 'destroy' );
 	} );
 	it( 'override options', function() {
@@ -62,6 +65,7 @@ describe( 'option test', function() {
 			'font_weight': null,
 			'repeat': true,
 			'stripe': true,
+			'stripe_thickness': 10,
 			'test': true,
 		} );
 		const param = $target[ 0 ].markerAnimationObj;
@@ -71,6 +75,8 @@ describe( 'option test', function() {
 		assert.strictEqual( param.op.font_weight, 'normal' );
 		assert.strictEqual( param.op.repeat, false );
 		assert.strictEqual( param.op.stripe, false );
+		// eslint-disable-next-line no-magic-numbers
+		assert.strictEqual( param.op.stripe_thickness, 10 );
 		$target.markerAnimation( 'destroy' );
 	} );
 	it( 'time option', function() {

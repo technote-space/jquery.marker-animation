@@ -17,6 +17,7 @@ $.fn.markerAnimation = function( ...args ) {
 				'font_weight': 'bold',
 				'repeat': false,
 				'stripe': false,
+				'stripe_thickness': 2,
 				'cssFilter': function( css ) {
 					return css;
 				},
@@ -51,7 +52,8 @@ $.fn.markerAnimation = function( ...args ) {
 				if ( $this.op.stripe ) {
 					css [ 'background-size' ] = '0 ' + $this.op.thickness;
 					css [ 'background-repeat' ] = 'no-repeat';
-					css[ 'background-image' ] = 'repeating-linear-gradient(-45deg, ' + $this.op.color + ', ' + $this.op.color + ' 2px,transparent 2px,transparent 4px)';
+					// eslint-disable-next-line no-magic-numbers
+					css[ 'background-image' ] = 'repeating-linear-gradient(-45deg, ' + $this.op.color + ', ' + $this.op.color + ' ' + $this.op.stripe_thickness + 'px,transparent ' + $this.op.stripe_thickness + 'px,transparent ' + ( $this.op.stripe_thickness * 2 ) + 'px)';
 				} else {
 					css[ 'background-size' ] = '200% ' + $this.op.thickness;
 					css[ 'background-repeat' ] = 'repeat-x';
@@ -140,6 +142,11 @@ $.fn.markerAnimation = function( ...args ) {
 							options[ key ] = '0s';
 						} else if ( /^-?0?\.?0+m?s$/.test( options[ key ] ) ) {
 							options[ key ] = '0s';
+						}
+					} else if ( 'stripe_thickness' === key ) {
+						options[ key ] = parseInt( options[ key ], 10 );
+						if ( isNaN( options[ key ] ) ) {
+							options[ key ] = 2;
 						}
 					}
 				}
