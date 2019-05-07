@@ -91,5 +91,5 @@ $('.marker-animation').markerAnimation({
     stripe: false
 });
 ```
-これが `true` の場合はアニメーションなしの動作になります。
+これが `true` の場合はアニメーションなしの動作になります。  
 ![stripe](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/master/stripe.png)
