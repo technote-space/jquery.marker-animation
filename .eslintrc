@@ -65,7 +65,7 @@
     "complexity": [
       "error",
       {
-        "maximum": 8
+        "maximum": 10
       }
     ],
     "curly": "error",
@@ -97,11 +97,14 @@
     ],
     "indent": [
       "error",
-      4
+      "tab",
+      {
+        "MemberExpression": "off"
+      }
     ],
     "space-before-function-paren": [
       "error",
-      "always"
+      "never"
     ],
     "space-before-blocks": "error",
     "prefer-const": "error",
@@ -129,6 +132,7 @@
     ]
   },
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2018
   }
 }

@@ -1,13 +1,12 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Marker animation jQuery plugin",
   "main": "jquery.marker-animation.min.js",
   "scripts": {
     "test": "npm run lint && npm run cover",
     "lint": "eslint src/*.js",
-    "cover": "NODE_ENV=test istanbul cover --report text _mocha",
-    "mocha": "NODE_ENV=test mocha",
+    "cover": "NODE_ENV=test nyc mocha",
     "develop": "webpack --mode development",
     "build": "webpack --mode production"
   },
@@ -34,7 +33,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
     "eslint": "^5.16.0",
-    "istanbul": "^0.4.3",
+    "nyc": "^14.1.0",
     "jquery": "^3.4.1",
     "jsdom": "13.0.0",
     "mocha": "^5.2.0",
