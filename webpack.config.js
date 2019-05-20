@@ -1,16 +1,16 @@
 const webpack = require( 'webpack' );
-const p = require( './package' );
+const pkg = require( './package' );
 
-const banner = `${ p.name } ${ p.version } - ${ p.description }\nCopyright (c) ${ new Date().getFullYear() } ${ p.author } - ${ p.homepage }\nLicense: ${ p.license }`;
+const banner = `${ pkg.name } ${ pkg.version } - ${ pkg.description }\nCopyright (c) ${ new Date().getFullYear() } ${ pkg.author } - ${ pkg.homepage }\nLicense: ${ pkg.license }`;
 
 const webpackConfig = {
 	'context': __dirname + '/src',
 	'entry': './index.js',
 	'output': {
 		'path': __dirname,
-		'filename': `${ p.name }.min.js`,
-		'library': `markerAnimation`,
-		'libraryTarget': 'umd',
+		'filename': `${ pkg.name }.min.js`,
+		'library': 'markerAnimation',
+		'libraryTarget': 'this',
 	},
 	'module': {
 		'rules': [
