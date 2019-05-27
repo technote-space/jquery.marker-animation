@@ -10,7 +10,7 @@ const webpackConfig = {
 		'path': __dirname,
 		'filename': `${ pkg.name }.min.js`,
 		'library': 'markerAnimation',
-		'libraryTarget': 'this',
+		'libraryTarget': 'umd',
 	},
 	'module': {
 		'rules': [
