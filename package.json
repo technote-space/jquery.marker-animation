@@ -1,12 +1,12 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "Marker animation jQuery plugin",
   "main": "jquery.marker-animation.min.js",
   "scripts": {
     "test": "npm run lint && npm run cover",
-    "lint": "eslint src/*.js",
-    "cover": "NODE_ENV=test nyc mocha",
+    "lint": "eslint src/**/**/*.js && eslint test/**/**/*.js",
+    "cover": "NODE_ENV=test nyc --reporter=lcov --reporter=text mocha",
     "develop": "webpack --mode development",
     "build": "webpack --mode production"
   },
@@ -18,7 +18,7 @@
     "jquery-plugin",
     "marker animation"
   ],
-  "author": "technote-space",
+  "author": "Technote <technote.space@gmail.com> (https://technote.space)",
   "bugs": {
     "url": "https://github.com/technote-space/jquery.marker-animation/issues"
   },
@@ -30,14 +30,16 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "eslint": "^5.16.0",
-    "nyc": "^14.1.0",
+    "nyc": "^14.1.1",
     "jquery": "^3.4.1",
-    "jsdom": "13.0.0",
-    "mocha": "^5.2.0",
-    "webpack": "^4.30.0",
+    "jsdom": "15.1.0",
+    "mocha": "^6.1.4",
+    "webpack": "^4.32.2",
     "webpack-cli": "^3.3.1"
   }
 }
