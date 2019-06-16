@@ -4,20 +4,22 @@ tag-template: 'v$NEXT_PATCH_VERSION'
 categories:
   - title: ':rocket: Features'
     labels:
-      - 'feature'
-      - 'new feature'
-      - 'enhancement'
+      - 'Type: Feature'
+      - 'Type: Refactoring'
   - title: ':bug: Bug Fixes'
     labels:
-      - 'fix'
-      - 'bugfix'
-      - 'bug'
+      - 'Type: Bug'
+      - 'Type: Maintenance'
+      - 'Type: Security'
   - title: ':green_book: Docs'
-    label: 'documentation'
+    labels:
+      - 'Type: Documentation'
   - title: ':white_check_mark: Tested'
     labels:
-      - 'test'
-      - 'tested'
+      - 'Type: Testing'
+  - title: ':sparkles: All Changes'
+    labels:
+      - 'Type: Release'
 template: |
   ## What’s Changed
 

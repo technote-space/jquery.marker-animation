@@ -12,7 +12,7 @@ requestInfoDefaultTitles:
   - update
 
 # *OPTIONAL* Label to be added to Issues and Pull Requests with insufficient information given
-requestInfoLabelToAdd: more-information-needed
+requestInfoLabelToAdd: "Status: More Information Needed"
 
 
 
@@ -37,3 +37,8 @@ newPRWelcomeComment: >
 firstPRMergeComment: >
   :tada: Congrats on merging your first pull request! We here at behaviorbot are proud of you!
 
+
+
+# Configuration for todo - https://github.com/jasonetco/todo
+todo:
+  - label: "Type: Todo"
