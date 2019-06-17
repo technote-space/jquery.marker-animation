@@ -102,7 +102,7 @@ $('.marker-animation').markerAnimation({
 ```
 この例ではマーカーの色が赤色になります。
 ### 例2: 複数設定
-```
+```html
 文章文章文章<span class="marker-animation" data-ma_repeat="true" data-ma_font_weight="null" data-ma_delay="2s">強調したい文字</span>文章文章文章文章
 ```
 この例では
