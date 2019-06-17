@@ -1,0 +1,26 @@
+language: node_js
+
+node_js:
+  - '11'
+
+dist: trusty
+
+sudo: false
+
+cache: npm
+
+branches:
+  only:
+    - master
+    - develop
+
+jobs:
+  include:
+    - stage: lint
+      script: npm run lint
+    - stage: test
+      script: npm run jest
+
+after_success:
+  - npm i coveralls
+  - cat ./coverage/lcov.info | $(npm bin)/coveralls
