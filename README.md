@@ -9,14 +9,14 @@
 ## Installation
 ### ダウンロードして利用
 [リリースバージョン](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/master/jquery.marker-animation.min.js)をダウンロードして
-```
+```html
 <script type="text/javascript" src="/assets/jquery.marker-animation.min.js"></script>
 ```
 のように読み込み
 ### npmから利用
 https://www.npmjs.com/package/jquery.marker-animation
 
-```
+```bash
 npm install --save jquery.marker-animation
 ```
 
@@ -28,11 +28,11 @@ npm install --save jquery.marker-animation
 [GitHub](https://github.com/technote-space/marker-animation)
 
 ## 基本的な使用方法
-```
+```html
 文章文章文章<span class="marker-animation">強調したい文字</span>文章文章文章文章
 ```
 
-```
+```html
 <script>
     $('.marker-animation').markerAnimation();
 </script>
@@ -41,35 +41,35 @@ npm install --save jquery.marker-animation
 ## オプション
 ### color
 マーカーの色を指定
-```
+```javascript
 $('.marker-animation').markerAnimation({
     color: '#fe9'
 });
 ```
 ### thickness
 マーカーの太さを指定
-```
+```javascript
 $('.marker-animation').markerAnimation({
     thickness: '.6em'
 });
 ```
 ### duration
 マーカーを塗るのを完了するまでの時間を指定
-```
+```javascript
 $('.marker-animation').markerAnimation({
     duration: '2s'
 });
 ```
 ### delay
 マーカーを塗るのを開始するまでの時間を指定
-```
+```javascript
 $('.marker-animation').markerAnimation({
     duration: '.1s'
 });
 ```
 ### font_weight
 文字の太さを指定
-```
+```javascript
 $('.marker-animation').markerAnimation({
     font_weight: 'bold'
 });
@@ -78,7 +78,7 @@ $('.marker-animation').markerAnimation({
 太字にしない場合はnullを設定してください。
 ### repeat
 アニメーションを繰り返すかどうかを指定
-```
+```javascript
 $('.marker-animation').markerAnimation({
     repeat: false
 });
@@ -86,7 +86,7 @@ $('.marker-animation').markerAnimation({
 trueにすると一度画面から外れて再び表示された際に再度アニメーションが実行されます。
 ### stripe
 ストライプデザインにするかどうかを指定
-```
+```javascript
 $('.marker-animation').markerAnimation({
     stripe: false
 });
