@@ -1,8 +1,10 @@
 {
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended"
+  ],
   "env": {
     "node": true,
-    "mocha": true,
+    "jest": true,
     "es6": true,
     "browser": true
   },
@@ -65,7 +67,7 @@
     "complexity": [
       "error",
       {
-        "maximum": 10
+        "maximum": 20
       }
     ],
     "curly": "error",
@@ -109,9 +111,7 @@
     "space-before-blocks": "error",
     "prefer-const": "error",
     "no-var": "error",
-    "arrow-body-style": [
-      "error"
-    ],
+    "arrow-body-style": "off",
     "arrow-spacing": "error",
     "strict": [
       "error"
