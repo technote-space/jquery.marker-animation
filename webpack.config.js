@@ -1,15 +1,19 @@
+const SpeedMeasurePlugin = require( 'speed-measure-webpack-plugin' );
+const DuplicatePackageCheckerPlugin = require( 'duplicate-package-checker-webpack-plugin' );
+const smp = new SpeedMeasurePlugin();
 const webpack = require( 'webpack' );
 const pkg = require( './package' );
+const path = require( 'path' );
 
 const banner = `${ pkg.name } ${ pkg.version } - ${ pkg.description }\nCopyright (c) ${ new Date().getFullYear() } ${ pkg.author } - ${ pkg.homepage }\nLicense: ${ pkg.license }`;
 
 const webpackConfig = {
-	'context': __dirname + '/src',
+	'context': path.resolve( __dirname, 'src' ),
 	'entry': './index.js',
 	'output': {
 		'path': __dirname,
 		'filename': `${ pkg.name }.min.js`,
-		'library': 'markerAnimation',
+		'library': 'MarkerAnimation',
 		'libraryTarget': 'umd',
 	},
 	'module': {
@@ -31,7 +35,8 @@ const webpackConfig = {
 	},
 	'plugins': [
 		new webpack.BannerPlugin( banner ),
+		new DuplicatePackageCheckerPlugin(),
 	],
 };
 
-module.exports = webpackConfig;
+module.exports = smp.wrap( webpackConfig );
