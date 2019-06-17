@@ -97,3 +97,21 @@ $('.marker-animation').markerAnimation({
 ```
 これが `true` の場合はアニメーションなしの動作になります。  
 ![stripe](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/master/stripe.png)
+
+## 個別に値を指定する方法
+`data-ma_[オプション名]` の形式で個別にオプションを指定することが可能です。
+### 例1: 色の変更
+```html
+文章文章文章<span class="marker-animation" data-ma_color="red">強調したい文字</span>文章文章文章文章
+```
+この例ではマーカーの色が赤色になります。
+### 例2: 複数設定
+```html
+文章文章文章<span class="marker-animation" data-ma_repeat="true" data-ma_font_weight="null" data-ma_delay="2s">強調したい文字</span>文章文章文章文章
+```
+この例では
+* 画面から外れるごとにアニメーションが実行
+* 太文字ではない
+* ２秒遅れてアニメーション開始
+
+が設定されます。
