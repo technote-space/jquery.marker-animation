@@ -34,7 +34,7 @@ npm install --save jquery.marker-animation
 
 ```
 <script>
-$('.marker-animation').markerAnimation();
+    $('.marker-animation').markerAnimation();
 </script>
 ```
 
