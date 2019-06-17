@@ -16,7 +16,8 @@
   },
   "keywords": [
     "jquery-plugin",
-    "marker animation"
+    "marker animation",
+    "highlighter"
   ],
   "author": "Technote <technote.space@gmail.com> (https://technote.space)",
   "bugs": {
