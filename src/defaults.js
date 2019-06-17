@@ -1,14 +1,14 @@
 export const SETTINGS_DEFAULTS = {
 	color: '#fe9',
-	paddingBottom: '.6em',
+	'padding_bottom': '.6em',
 	thickness: '.6em',
 	delay: '.1s',
 	duration: '2s',
 	function: 'ease',
-	fontWeight: 'bold',
+	'font_weight': 'bold',
 	repeat: false,
 	stripe: false,
-	stripeThickness: 2,
+	'stripe_thickness': 2,
 	cssFilter: function( css ) {
 		return css;
 	},

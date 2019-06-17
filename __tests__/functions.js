@@ -133,8 +133,8 @@ describe( 'getCss', () => {
 	it( 'should get marker css', () => {
 		const css = getCss( {
 			stripe: false,
-			paddingBottom: 'a',
-			fontWeight: 'b',
+			'padding_bottom': 'a',
+			'font_weight': 'b',
 			thickness: 'c',
 			color: 'd',
 			cssFilter: css => css,
@@ -160,7 +160,7 @@ describe( 'getCss', () => {
 			stripe: false,
 			delay: ZERO_SEC,
 			duration: ZERO_SEC,
-			paddingBottom: 'a',
+			'padding_bottom': 'a',
 			cssFilter: css => css,
 		} );
 		expect( css ).hasOwnProperty( 'background-position' );
@@ -174,10 +174,10 @@ describe( 'getCss', () => {
 		} );
 		const css = getCss( {
 			stripe: true,
-			paddingBottom: 'a',
+			'padding_bottom': 'a',
 			thickness: 'b',
 			color: 'c',
-			stripeThickness: 3,
+			'stripe_thickness': 3,
 			cssFilter: cssFilter,
 		} );
 

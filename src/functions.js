@@ -68,9 +68,9 @@ export const getCss = options => options.cssFilter( options.stripe ? getStripeCs
 const getCommonCss = options => Object.assign( {
 	'display': 'inline',
 	'background-position': 'left 0 center',
-	'padding-bottom': options.paddingBottom,
-}, options.fontWeight ? {
-	'font-weight': options.fontWeight,
+	'padding-bottom': options.padding_bottom,
+}, options.font_weight ? {
+	'font-weight': options.font_weight,
 } : {} );
 
 /**
@@ -93,7 +93,7 @@ const getStripeCss = options => Object.assign( {}, getCommonCss( options ), {
 	'background-size': `100% ${ options.thickness }`,
 	'background-repeat': 'no-repeat',
 	// eslint-disable-next-line no-magic-numbers
-	'background-image': `repeating-linear-gradient(-45deg, ${ options.color }, ${ options.color } ${ options.stripeThickness }px, transparent ${ options.stripeThickness }px, transparent ${ options.stripeThickness * 2 }px)`,
+	'background-image': `repeating-linear-gradient(-45deg, ${ options.color }, ${ options.color } ${ options.stripe_thickness }px, transparent ${ options.stripe_thickness }px, transparent ${ options.stripe_thickness * 2 }px)`,
 } );
 
 /**
