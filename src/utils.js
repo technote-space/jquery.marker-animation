@@ -11,7 +11,7 @@ export const parseTime = value => ! /^-?\d*\.?\d+m?s$/.test( value ) || /^-?0?\.
  * @param {string|number} value value
  * @returns {number} thickness
  */
-export const parseStripeThickness = value => isNaN( parseInt( value, 10 ) ) ? SETTINGS_DEFAULTS.stripeThickness : parseInt( value );
+export const parseStripeThickness = value => isNaN( parseInt( value, 10 ) ) ? SETTINGS_DEFAULTS.stripe_thickness : parseInt( value );
 
 /**
  * @param {object} target target
@@ -19,14 +19,14 @@ export const parseStripeThickness = value => isNaN( parseInt( value, 10 ) ) ? SE
  * @returns {object} options
  */
 export const getTargetOptions = ( target, args ) => {
-	const options = Object.assign( {}, args.length && typeof args[ 0 ] === 'object' ? normalizeArgsKeys( args[ 0 ] ) : {} );
+	const options = Object.assign( {}, args.length && typeof args[ 0 ] === 'object' ? args[ 0 ] : {} );
 	const filters = {
 		'delay': parseTime,
 		'duration': parseTime,
-		'stripeThickness': parseStripeThickness,
+		'stripe_thickness': parseStripeThickness,
 	};
 	Object.keys( SETTINGS_DEFAULTS ).forEach( key => {
-		const data = getTargetData( target, key );
+		const data = target.data( PREFIX + key );
 		if ( isScalar( data ) && key in filters ) {
 			options[ key ] = filters[ key ]( data );
 		} else if ( undefined !== data ) {
@@ -56,25 +56,3 @@ export const toSnakeCase = string => string.replace( /[\w]([A-Z])/g, matches => 
  * @returns {string} camel case
  */
 export const toCamelCase = string => string.replace( '-', '_' ).replace( /(_\w)/g, matches => matches[ 1 ].toUpperCase() );
-
-/**
- * @description for compatibility
- * @param {object} argsObj object
- * @returns {object} normalized
- */
-export const normalizeArgsKeys = argsObj => Object.keys( argsObj ).length ? Object.assign( ...Object.keys( argsObj ).map( key => ( { [ toCamelCase( key ) ]: argsObj[ key ] } ) ) ) : {};
-
-/**
- * @param {object} target target
- * @param {string} key key
- * @returns {*} data
- */
-export const getTargetData = ( target, key ) => {
-	const data = target.data( PREFIX + key );
-	if ( data !== undefined ) {
-		return data;
-	}
-
-	// for compatibility (to snake case)
-	return target.data( PREFIX + toSnakeCase( key ) );
-};
