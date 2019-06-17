@@ -1,5 +1,6 @@
 # jQuery Marker Animation
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ea718ad6a2c748cca3a882520faa0ed0)](https://app.codacy.com/app/technote-space/jquery.marker-animation?utm_source=github.com&utm_medium=referral&utm_content=technote-space/jquery.marker-animation&utm_campaign=Badge_Grade_Dashboard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/jquery.marker-animation/blob/master/LICENSE)
 
 蛍光ペンで塗るようなアニメーションを表示するjQueryプラグイン
