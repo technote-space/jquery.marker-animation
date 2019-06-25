@@ -36,7 +36,7 @@ describe( 'reset', () => {
 
 	it( 'should reset', () => {
 		const css = jest.fn( ( key, value ) => {
-			expect( cssValue ).hasOwnProperty( key );
+			expect( cssValue ).toHaveProperty( key );
 			expect( value ).toBe( cssValue[ key ] );
 		} );
 		const target = {
@@ -50,7 +50,7 @@ describe( 'reset', () => {
 		reset( target );
 
 		RESET_KEYS.forEach( key => {
-			expect( target[ 0 ] ).not.hasOwnProperty( key );
+			expect( target[ 0 ] ).not.toHaveProperty( key );
 		} );
 		expect( css ).toBeCalled();
 	} );
@@ -139,13 +139,13 @@ describe( 'getCss', () => {
 			color: 'd',
 			cssFilter: css => css,
 		} );
-		expect( css ).hasOwnProperty( 'display' );
-		expect( css ).hasOwnProperty( 'background-position' );
-		expect( css ).hasOwnProperty( 'padding-bottom' );
-		expect( css ).hasOwnProperty( 'font-weight' );
-		expect( css ).hasOwnProperty( 'background-size' );
-		expect( css ).hasOwnProperty( 'background-repeat' );
-		expect( css ).hasOwnProperty( 'background-image' );
+		expect( css ).toHaveProperty( 'display' );
+		expect( css ).toHaveProperty( 'background-position' );
+		expect( css ).toHaveProperty( 'padding-bottom' );
+		expect( css ).toHaveProperty( 'font-weight' );
+		expect( css ).toHaveProperty( 'background-size' );
+		expect( css ).toHaveProperty( 'background-repeat' );
+		expect( css ).toHaveProperty( 'background-image' );
 		expect( css[ 'display' ] ).toBe( 'inline' );
 		expect( css[ 'background-position' ] ).toBe( 'left 0 center' );
 		expect( css[ 'padding-bottom' ] ).toBe( 'a' );
@@ -163,7 +163,7 @@ describe( 'getCss', () => {
 			'padding_bottom': 'a',
 			cssFilter: css => css,
 		} );
-		expect( css ).hasOwnProperty( 'background-position' );
+		expect( css ).toHaveProperty( 'background-position' );
 		expect( css[ 'background-position' ] ).toBe( 'left -100% center' );
 	} );
 
@@ -181,12 +181,12 @@ describe( 'getCss', () => {
 			cssFilter: cssFilter,
 		} );
 
-		expect( css ).hasOwnProperty( 'display' );
-		expect( css ).hasOwnProperty( 'background-position' );
-		expect( css ).hasOwnProperty( 'padding-bottom' );
-		expect( css ).hasOwnProperty( 'background-size' );
-		expect( css ).hasOwnProperty( 'background-repeat' );
-		expect( css ).hasOwnProperty( 'background-image' );
+		expect( css ).toHaveProperty( 'display' );
+		expect( css ).toHaveProperty( 'background-position' );
+		expect( css ).toHaveProperty( 'padding-bottom' );
+		expect( css ).toHaveProperty( 'background-size' );
+		expect( css ).toHaveProperty( 'background-repeat' );
+		expect( css ).toHaveProperty( 'background-image' );
 		expect( css[ 'display' ] ).toBe( 'inline-test' );
 		expect( css[ 'background-position' ] ).toBe( 'left 0 center-test' );
 		expect( css[ 'padding-bottom' ] ).toBe( 'a-test' );
@@ -220,7 +220,7 @@ describe( 'refresh', () => {
 
 		expect( off ).toBeCalled();
 		expect( attr ).toBeCalled();
-		expect( target[ 0 ] ).hasOwnProperty( 'resetValues' );
+		expect( target[ 0 ] ).toHaveProperty( 'resetValues' );
 		RESET_KEYS.forEach( ( key, index ) => {
 			expect( target[ 0 ].resetValues[ key ] ).toBe( index );
 		} );
