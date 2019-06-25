@@ -1,11 +1,9 @@
 language: node_js
-
 node_js:
   - '11'
 
-dist: trusty
-
 sudo: false
+dist: trusty
 
 cache: npm
 
