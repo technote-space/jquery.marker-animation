@@ -1,16 +1,18 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "description": "Marker animation jQuery plugin",
   "main": "jquery.marker-animation.min.js",
   "scripts": {
+    "start": "npm run build",
     "test": "npm run lint && npm run jest",
     "test:update": "npm run lint && npm run jest:update",
     "lint": "eslint src/**/**/*.js && eslint __tests__/**/**/*.js",
     "jest": "jest --coverage",
     "jest:update": "jest --coverage --updateSnapshot",
     "develop": "webpack --mode development --config webpack.config.js",
-    "build": "webpack --mode production --config webpack.config.js"
+    "build": "webpack --mode production --config webpack.config.js",
+    "coveralls": "cat ./coverage/lcov.info | $(npm bin)/coveralls"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,7 @@
     "@babel/register": "^7.4.4",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
+    "coveralls": "^3.0.4",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "enzyme": "^3.10.0",
     "enzyme-to-json": "^3.3.5",

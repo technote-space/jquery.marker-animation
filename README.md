@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/jquery.marker-animation.svg)](https://badge.fury.io/js/jquery.marker-animation)
 [![Build Status](https://travis-ci.com/technote-space/jquery.marker-animation.svg?branch=master)](https://travis-ci.com/technote-space/jquery.marker-animation)
 [![Coverage Status](https://coveralls.io/repos/github/technote-space/jquery.marker-animation/badge.svg?branch=master)](https://coveralls.io/github/technote-space/jquery.marker-animation?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/190aa56516f94fd39fe47d7c76ef9ce4)](https://www.codacy.com/app/technote-space/jquery.marker-animation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=technote-space/jquery.marker-animation&amp;utm_campaign=Badge_Grade)
+[![CodeFactor](https://www.codefactor.io/repository/github/technote-space/jquery.marker-animation/badge)](https://www.codefactor.io/repository/github/technote-space/jquery.marker-animation)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/jquery.marker-animation/blob/master/LICENSE)
 
 蛍光ペンで塗るようなアニメーションを表示するjQueryプラグイン
