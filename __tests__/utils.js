@@ -46,10 +46,10 @@ describe( 'getTargetOptions', () => {
 			delay: 10,
 			duration: '.5ms',
 		} ), [ ] );
-		expect( options ).hasOwnProperty( 'padding_bottom' );
-		expect( options ).hasOwnProperty( 'stripe_thickness' );
-		expect( options ).hasOwnProperty( 'delay' );
-		expect( options ).hasOwnProperty( 'duration' );
+		expect( options ).toHaveProperty( 'padding_bottom' );
+		expect( options ).toHaveProperty( 'stripe_thickness' );
+		expect( options ).toHaveProperty( 'delay' );
+		expect( options ).toHaveProperty( 'duration' );
 		expect( options.padding_bottom ).toBe( '100em' );
 		expect( options.stripe_thickness ).toBe( 1000 );
 		expect( options.delay ).toBe( ZERO_SEC );
@@ -61,10 +61,10 @@ describe( 'getTargetOptions', () => {
 			'stripe_thickness': '',
 			delay: '0.0ms',
 		} ), [ { color: 'red' } ] );
-		expect( options ).hasOwnProperty( 'stripe_thickness' );
-		expect( options ).hasOwnProperty( 'delay' );
-		expect( options ).hasOwnProperty( 'font_weight' );
-		expect( options ).hasOwnProperty( 'cssFilter' );
+		expect( options ).toHaveProperty( 'stripe_thickness' );
+		expect( options ).toHaveProperty( 'delay' );
+		expect( options ).toHaveProperty( 'font_weight' );
+		expect( options ).toHaveProperty( 'cssFilter' );
 		expect( options.stripe_thickness ).toBe( SETTINGS_DEFAULTS.stripe_thickness );
 		expect( options.delay ).toBe( ZERO_SEC );
 		expect( options.color ).toBe( 'red' );
