@@ -7,6 +7,12 @@ dist: trusty
 
 cache: npm
 
+notifications:
+  email: false
+  slack:
+    rooms:
+      - secure: j3ZqCHB1nLvLtgfVEIkkYV8iTbdVF2Gl+BNorvOfi8+sySm5cJv9cw6UXo7zvFuaQc24E6V+9bOZxO7gIYjeo/i2AWbcfEYaLO+2GqLTA3TaVgr2jzCQaPLFQuO5HmMKvkB1i2D6UQHtTko3+B9BvOM3s2GLuod5AgnIajOOcylvGYnctaKpIR/brIKdKX2GxlxyrOdrMWhBS2QK1XKTpKiQIcD2mAmuqHFrpm8bFxkqTgypZX/VwlXdDFTT8eqCp8JST9R6rYE7DBP2DEn+05qX8wo1yHRsA+Pghz/JvLvOQBZnC5JQcZH0Jn7LSGx28CdpfkceSe8WFiwj7AH6Mtfmhp2wI7K/NYfF3K/YwBKF/D6mni/mzNNmMVkitRAxhxEt9B77WUfGCvbiGgQHEWeFd3TdVvbRE3EgoOpQ2WJVF7EZoDhb6w0N5u38/w0oIk6ytfifb5gwDVav/zzlpPRXRZaVTHXM287Ih7kwaHHgAXDXQ4CILZAep3HIKGVe60x+Dlq14qfDUcC3NzF5DbTa77+ufh30pdMXn5+i39/QFy1FnzgEoxSk6YGSu4YWcbpAfxDbYV9qrR/BE2gh3IGatuyfR2uP9kkkWMbmbfPxQpu525+wo8H+pzoV6/w4qUEq6be8GjWZUTepwKJ2Wxkf8AqtnB5BiNcect/iNVQ=
+
 branches:
   only:
     - master
