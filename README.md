@@ -12,7 +12,7 @@
 
 ## Installation
 ### ダウンロードして利用
-[リリースバージョン](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/master/jquery.marker-animation.min.js)をダウンロードして
+[リリースバージョン](https://github.com/technote-space/jquery.marker-animation/releases/latest/download/jquery.marker-animation.min.js)をダウンロードして
 ```html
 <script type="text/javascript" src="/assets/jquery.marker-animation.min.js"></script>
 ```
