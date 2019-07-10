@@ -5,7 +5,10 @@ node_js:
 sudo: false
 dist: trusty
 
-cache: npm
+git:
+  depth: 3
+
+cache: yarn
 
 notifications:
   email: false
@@ -33,27 +36,26 @@ jobs:
       language: node_js
       node_js: '11'
       dist: trusty
-      script: npm run lint
+      script: yarn lint
 
     - stage: test
       language: node_js
       node_js: '10'
       dist: trusty
-      script: npm run jest
+      script: yarn jest
     - stage: test
       language: node_js
       node_js: '11'
       dist: trusty
-      script: npm run jest
-      after_success:
-        - npm i coveralls
-        - cat ./coverage/lcov.info | $(npm bin)/coveralls
+      script: yarn jest
+      after_success: yarn coveralls
 
     - stage: deploy
       language: node_js
       node_js: '11'
       dist: trusty
       script: skip
+      before_deploy: yarn build
       deploy:
         provider: releases
         skip_cleanup: true
@@ -72,7 +74,7 @@ jobs:
       node_js: '11'
       dist: trusty
       script: skip
-      before_deploy: npm run jest
+      before_deploy: yarn build
       deploy:
         provider: npm
         skip_cleanup: true
