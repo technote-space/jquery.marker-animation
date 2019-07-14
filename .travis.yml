@@ -102,4 +102,4 @@ jobs:
         keep_history: true
         local_dir: ${GH_PAGES_DIR}
         on:
-          branch: master
+          tags: true
