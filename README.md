@@ -8,7 +8,7 @@
 
 蛍光ペンで塗るようなアニメーションを表示するjQueryプラグイン
 
-![動作](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/master/marker-animation.gif)
+![動作](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/marker-animation.gif)
 
 ## Installation
 ### ダウンロードして利用
@@ -96,7 +96,7 @@ $('.marker-animation').markerAnimation({
 });
 ```
 これが `true` の場合はアニメーションなしの動作になります。  
-![stripe](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/master/stripe.png)
+![stripe](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/stripe.png)
 
 ## 個別に値を指定する方法
 `data-ma_[オプション名]` の形式で個別にオプションを指定することが可能です。
