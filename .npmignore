@@ -3,9 +3,8 @@
 src/
 __tests__/
 node_modules/
-marker-animation.gif
-stripe.png
 _config.yml
 jest.config.js
 jest.setup.js
 yarn.lock
+composer.json
