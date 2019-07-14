@@ -8,8 +8,6 @@ dist: trusty
 git:
   depth: 3
 
-cache: yarn
-
 notifications:
   email: false
   slack:
@@ -20,6 +18,12 @@ branches:
   only:
     - master
     - "/^v[0-9\\.]+/"
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - "${TRAVIS_BUILD_DIR}/.work/cache"
 
 stages:
   - name: check
@@ -93,8 +97,10 @@ jobs:
         - GH_PAGES_TRACKING_ID=UA-78163306-3
       script: skip
       before_deploy:
-        - source tests/bin/deploy/env.sh
-        - bash tests/bin/deploy/gh-pages.sh
+        - git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
+        - bash travis-ci/bin/prepare.sh
+        - source travis-ci/bin/deploy/env.sh
+        - bash travis-ci/bin/deploy/gh-pages.sh
       deploy:
         provider: pages
         skip_cleanup: true
