@@ -1,4 +1,9 @@
 node_modules/
 coverage/
 .idea/
-jquery.marker-animation.min.js
+/jquery.marker-animation.min.js
+/travis-ci
+/gh-pages
+.work/
+composer.lock
+!/bin

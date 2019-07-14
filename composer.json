@@ -1,0 +1,26 @@
+{
+  "name": "technote-space/jquery.marker-animation",
+  "description": "jQuery Marker Animation",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Technote",
+      "email": "technote.space@gmail.com",
+      "homepage": "https://technote.space"
+    }
+  ],
+  "scripts": {
+    "bin:download": [
+      "mkdir -p ./travis-ci/.git",
+      "chmod -R +w ./travis-ci/.git && rm -rdf ./travis-ci",
+      "rm -f ./tests/bootstrap.php ./.coveralls.yml ./phpcs.xml ./phpmd.xml phpunit.xml",
+      "git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci"
+    ],
+    "bin:update": [
+      "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash bin/update/package.sh",
+      "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash bin/update/commit.sh"
+    ],
+    "bin:gh-pages": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) GH_PAGES_TITLE='jQuery Marker Animation' TRACKING_ID='UA-78163306-3' bash ./travis-ci/bin/deploy/gh-pages.sh"
+  }
+}

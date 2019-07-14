@@ -8,31 +8,34 @@
 
 *Read this in other languages: [English](README.md), [日本語](README.ja.md).*
 
-jQuery plugin to add under line animation like highlighter.
+蛍光ペンで塗るようなアニメーションを表示するjQueryプラグイン
 
-![Behavior](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/marker-animation.gif)
+![動作](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/marker-animation.gif)
 
 ## Installation
-### Use from download
-Download [Release version](https://github.com/technote-space/jquery.marker-animation/releases/latest/download/jquery.marker-animation.min.js) and enqueue script.
+### ダウンロードして利用
+[リリースバージョン](https://github.com/technote-space/jquery.marker-animation/releases/latest/download/jquery.marker-animation.min.js)をダウンロードして
 ```html
 <script type="text/javascript" src="/assets/jquery.marker-animation.min.js"></script>
 ```
-### Use from npm
+のように読み込む
+### npmから利用
 https://www.npmjs.com/package/jquery.marker-animation
 
 ```bash
 npm install --save jquery.marker-animation
 ```
 
-### for WordPress
+### WordPressで利用
+プラグインとして利用できるようにしました。  
+
 [WordPress](https://ja.wordpress.org/plugins/marker-animation/)
 
 [GitHub](https://github.com/technote-space/marker-animation)
 
-## Usage
+## 基本的な使用方法
 ```html
-Hello, Dolly <span class="marker-animation">Well, hello, Dolly</span> Hello, Dolly
+文章文章文章<span class="marker-animation">強調したい文字</span>文章文章文章文章
 ```
 
 ```html
@@ -41,78 +44,76 @@ Hello, Dolly <span class="marker-animation">Well, hello, Dolly</span> Hello, Dol
 </script>
 ```
 
-## Options
+## オプション
 ### color
-Set the color of line
+マーカーの色を指定
 ```javascript
 $('.marker-animation').markerAnimation({
     color: '#fe9'
 });
 ```
 ### thickness
-Set the thickness of line
+マーカーの太さを指定
 ```javascript
 $('.marker-animation').markerAnimation({
     thickness: '.6em'
 });
 ```
 ### duration
-Set the time to complete drawing a line
+マーカーを塗るのを完了するまでの時間を指定
 ```javascript
 $('.marker-animation').markerAnimation({
     duration: '2s'
 });
 ```
 ### delay
-Set the time to start drawing a line
+マーカーを塗るのを開始するまでの時間を指定
 ```javascript
 $('.marker-animation').markerAnimation({
     duration: '.1s'
 });
 ```
 ### font_weight
-Set the thickness of characters
+文字の太さを指定
 ```javascript
 $('.marker-animation').markerAnimation({
     font_weight: 'bold'
 });
 ```
-\[default = `bold`]  
-If you do not want to make it bold, please set `null`.
+デフォルトは太字です。  
+太字にしない場合はnullを設定してください。
 ### repeat
-Set whether to repeat the animation
+アニメーションを繰り返すかどうかを指定
 ```javascript
 $('.marker-animation').markerAnimation({
     repeat: false
 });
 ```
-If this set to true, the animation will be executed again when it is off screen and displayed again.
+trueにすると一度画面から外れて再び表示された際に再度アニメーションが実行されます。
 ### stripe
-Set whether to make it stripe design
+ストライプデザインにするかどうかを指定
 ```javascript
 $('.marker-animation').markerAnimation({
     stripe: false
 });
 ```
-If this set to true, the animation will not be executed.
-
+これが `true` の場合はアニメーションなしの動作になります。  
 ![stripe](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/stripe.png)
 
-## How to set the value for each
-You can set options in the following format.   
-```
-data-ma_[option name]
-```
-### e.g. Change color
+## 個別に値を指定する方法
+`data-ma_[オプション名]` の形式で個別にオプションを指定することが可能です。
+### 例1: 色の変更
 ```html
-Hello, Dolly <span class="marker-animation" data-ma_color="red">Well, hello, Dolly</span> Hello, Dolly
+文章文章文章<span class="marker-animation" data-ma_color="red">強調したい文字</span>文章文章文章文章
 ```
-In this example, the color of the line is red.
-### e.g Multiple options
+この例ではマーカーの色が赤色になります。
+### 例2: 複数設定
 ```html
-Hello, Dolly <span class="marker-animation" data-ma_repeat="true" data-ma_font_weight="null" data-ma_delay="2s">Well, hello, Dolly</span> Hello, Dolly
+文章文章文章<span class="marker-animation" data-ma_repeat="true" data-ma_font_weight="null" data-ma_delay="2s">強調したい文字</span>文章文章文章文章
 ```
-In this example, the options below are set.
-* Repeat animation
-* Not bold
-* 2sec delay animation
+この例では
+* 画面から外れるごとにアニメーションが実行
+* 太文字ではない
+* ２秒遅れてアニメーション開始
+
+が設定されます。
