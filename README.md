@@ -10,6 +10,10 @@
 
 jQuery plugin to add under line animation like highlighter.
 
+[Demonstration](https://technote-space.github.io/jquery.marker-animation/)
+
+## Screenshot
+### Behavior
 ![Behavior](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/marker-animation.gif)
 
 ## Installation
