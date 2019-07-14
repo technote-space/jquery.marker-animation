@@ -21,6 +21,6 @@
       "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash bin/update/package.sh",
       "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash bin/update/commit.sh"
     ],
-    "bin:gh-pages": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) GH_PAGES_TITLE='jQuery Marker Animation' TRACKING_ID='UA-78163306-3' bash ./travis-ci/bin/deploy/gh-pages.sh"
+    "bin:gh-pages": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) GH_PAGES_TITLE='jQuery Marker Animation' bash ./travis-ci/bin/deploy/gh-pages.sh"
   }
 }
