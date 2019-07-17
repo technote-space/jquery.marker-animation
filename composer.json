@@ -11,6 +11,8 @@
     }
   ],
   "scripts": {
+    "bin:js-lint": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) ./travis-ci/bin/js/js-lint.sh",
+    "bin:js-test": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) ./travis-ci/bin/js/js-test.sh",
     "bin:download": [
       "mkdir -p ./travis-ci/.git",
       "chmod -R +w ./travis-ci/.git && rm -rdf ./travis-ci",
@@ -18,8 +20,7 @@
       "git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci"
     ],
     "bin:update": [
-      "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash bin/update/package.sh",
-      "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash bin/update/commit.sh"
+      "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash ./travis-ci/bin/update/package.sh"
     ],
     "bin:gh-pages": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) GH_PAGES_TITLE='jQuery Marker Animation' bash ./travis-ci/bin/deploy/gh-pages.sh"
   }

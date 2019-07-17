@@ -5,11 +5,11 @@
   "main": "jquery.marker-animation.min.js",
   "scripts": {
     "start": "yarn build",
-    "test": "yarn lint && yarn jest",
-    "test:update": "yarn lint && yarn jest:update",
+    "test": "yarn lint && yarn cover",
+    "test:update": "yarn lint && yarn cover:update",
     "lint": "eslint src/**/**/*.js && eslint __tests__/**/**/*.js",
-    "jest": "jest --coverage",
-    "jest:update": "jest --coverage --updateSnapshot",
+    "cover": "jest --coverage",
+    "cover:update": "jest --coverage --updateSnapshot",
     "develop": "webpack --mode development --config webpack.config.js",
     "build": "webpack --mode production --config webpack.config.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls"

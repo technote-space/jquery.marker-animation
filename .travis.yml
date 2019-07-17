@@ -33,6 +33,9 @@ stages:
   - name: deploy
     if: tag IS present
 
+before_script:
+  - git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
+
 jobs:
   fast_finish: true
   include:
@@ -40,19 +43,19 @@ jobs:
       language: node_js
       node_js: '11'
       dist: trusty
-      script: yarn lint
+      script: bash travis-ci/bin/js/js-lint.sh
 
     - stage: test
       language: node_js
       node_js: '10'
       dist: trusty
-      script: yarn jest
+      script: bash travis-ci/bin/js/js-test.sh
     - stage: test
       language: node_js
       node_js: '11'
       dist: trusty
-      script: yarn jest
-      after_success: yarn coveralls
+      env: COVERAGE_REPORT=1
+      script: bash travis-ci/bin/js/js-test.sh
 
     - stage: deploy
       language: node_js
@@ -97,7 +100,6 @@ jobs:
         - GH_PAGES_TRACKING_ID=UA-78163306-3
       script: skip
       before_deploy:
-        - git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
         - bash travis-ci/bin/prepare.sh
         - source travis-ci/bin/deploy/env.sh
         - bash travis-ci/bin/deploy/gh-pages.sh
