@@ -13,6 +13,7 @@
   "scripts": {
     "bin:js-lint": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) ./travis-ci/bin/js/js-lint.sh",
     "bin:js-test": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) ./travis-ci/bin/js/js-test.sh",
+    "bin:test": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash ./travis-ci/bin/test.sh",
     "bin:download": [
       "mkdir -p ./travis-ci/.git",
       "chmod -R +w ./travis-ci/.git && rm -rdf ./travis-ci",
