@@ -1,9 +1,8 @@
 node_modules/
-coverage/
-.idea/
+/coverage
+/.idea
 /jquery.marker-animation.min.js
 /travis-ci
 /gh-pages
 .work/
-composer.lock
 !/bin

@@ -1,15 +1,15 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.3.14",
+  "version": "1.3.15",
   "description": "Marker animation jQuery plugin",
   "main": "jquery.marker-animation.min.js",
   "scripts": {
     "start": "yarn build",
-    "test": "yarn lint && yarn jest",
-    "test:update": "yarn lint && yarn jest:update",
+    "test": "yarn lint && yarn cover",
+    "test:update": "yarn lint && yarn cover:update",
     "lint": "eslint src/**/**/*.js && eslint __tests__/**/**/*.js",
-    "jest": "jest --coverage",
-    "jest:update": "jest --coverage --updateSnapshot",
+    "cover": "jest --coverage",
+    "cover:update": "jest --coverage --updateSnapshot",
     "develop": "webpack --mode development --config webpack.config.js",
     "build": "webpack --mode production --config webpack.config.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
@@ -33,12 +33,12 @@
     "jquery-inview": "^1.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/plugin-transform-runtime": "^7.5.0",
-    "@babel/preset-env": "^7.5.4",
-    "@babel/register": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "coveralls": "^3.0.5",
@@ -49,7 +49,7 @@
     "jest": "^24.8.0",
     "jquery": "^3.4.1",
     "speed-measure-webpack-plugin": "^1.3.1",
-    "webpack": "^4.35.3",
+    "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6"
   }
 }
