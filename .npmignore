@@ -8,5 +8,5 @@ jest.config.js
 jest.setup.js
 yarn.lock
 composer.json
-README.*.md
+README.ja.md
 /travis-ci

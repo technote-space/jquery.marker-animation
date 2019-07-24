@@ -30,8 +30,6 @@ npm install --save jquery.marker-animation
 ```
 
 ### for WordPress
-[WordPress](https://ja.wordpress.org/plugins/marker-animation/)
-
 [GitHub](https://github.com/technote-space/marker-animation)
 
 ## Usage
