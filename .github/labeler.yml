@@ -1,0 +1,17 @@
+javascript:
+  - '**/*.js'
+typescript:
+  - '**/*.ts'
+php:
+  - '**/*.php'
+dependencies:
+  - '**/*.lock'
+  - '**/*-lock.json'
+
+'Type: Testing':
+  - '**/tests/*'
+  - '**/test/*'
+  - '**/__tests__/*'
+
+'Type: Documentation':
+  - '**/*.md'

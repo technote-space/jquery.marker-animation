@@ -12,6 +12,31 @@
 
 [デモ](https://technote-space.github.io/jquery.marker-animation/)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [スクリーンショット](#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88)
+  - [動作](#%E5%8B%95%E4%BD%9C)
+- [Installation](#installation)
+  - [ダウンロードして利用](#%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%97%E3%81%A6%E5%88%A9%E7%94%A8)
+  - [npmから利用](#npm%E3%81%8B%E3%82%89%E5%88%A9%E7%94%A8)
+  - [WordPressで利用](#wordpress%E3%81%A7%E5%88%A9%E7%94%A8)
+- [基本的な使用方法](#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
+- [オプション](#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3)
+  - [color](#color)
+  - [thickness](#thickness)
+  - [duration](#duration)
+  - [delay](#delay)
+  - [font_weight](#font_weight)
+  - [repeat](#repeat)
+  - [stripe](#stripe)
+- [個別に値を指定する方法](#%E5%80%8B%E5%88%A5%E3%81%AB%E5%80%A4%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95)
+  - [例1: 色の変更](#%E4%BE%8B1-%E8%89%B2%E3%81%AE%E5%A4%89%E6%9B%B4)
+  - [例2: 複数設定](#%E4%BE%8B2-%E8%A4%87%E6%95%B0%E8%A8%AD%E5%AE%9A)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## スクリーンショット
 ### 動作
 ![動作](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/marker-animation.gif)
