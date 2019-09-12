@@ -12,6 +12,9 @@
 
 [デモ](https://technote-space.github.io/jquery.marker-animation/)
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 ## スクリーンショット
 ### 動作
 ![動作](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/marker-animation.gif)
