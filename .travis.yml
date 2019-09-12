@@ -67,7 +67,6 @@ jobs:
         api_key:
           secure: Eni1T7jImpOkUal4rLbuhXciBLcpKoRRdFQh32pIzi+9FVWkDNkXNGjBxT3qQveUhezBV6SughTkwRoV3v4Ovh5ADamlLE60B11iZMwXmSOXBbiFsYUp2pqZhoRaVhLj+ok7bAyNgddtYuMCI2fT2F+yp8y8nBHyhnDCBjK6aDa1teMJ5eA84iGyZR0ZfBawEv992g55QKzHTq3f4exERA/IqSBxTDPk1RmyZFUBHVzjhKImzydmie9aZyPkL+zxSEW/SXy134kDfCujTlqCki0cRYduaElH7pJFdsn3ihMtUM/c/iGT3AcM+x+E8WCOvNIklreJYMn8DWn/2xBCqpshh4NqwIWi04XT9ti9gAtgd0br/6HcNg0ckEnWtfFAJGOu+J/cgRwYgIdjSmVTBy5igyGp3X+PNMBz/Z3gi5EFNHVHaKzkHY3AAfqPn+xMLlaxm8uvE+y/hSk1lc1VLePCJ5/5UcizuFO91obWjMZw3Po5tbRpshxULiH332eFsrsdnM2OCApQCyqrOfGeefd38U8QMyjCDEJlvSml48AG4YiT7jBBwZcFhTBt1Q9DjMnhuT/ExHWzRnIDie0DY5R2HQhQtvIDJ1QleBJdxqrI/pgxOU7d07vGWJRgdZJdXXE7BNb/faCY6RnWS9moinuuolWk9hVWUz+lkw+XWXo=
         file: "jquery.marker-animation.min.js"
-        body: ${RELEASE_BODY}
         overwrite: true
         on:
           tags: true
