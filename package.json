@@ -11,8 +11,7 @@
     "cover": "jest --coverage",
     "cover:update": "jest --coverage --updateSnapshot",
     "develop": "webpack --mode development --config webpack.config.js",
-    "build": "webpack --mode production --config webpack.config.js",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "build": "webpack --mode production --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -30,26 +29,24 @@
   "homepage": "https://github.com/technote-space/jquery.marker-animation#readme",
   "license": "MIT",
   "dependencies": {
-    "jquery-inview": "^1.1.2"
-  },
-  "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/plugin-transform-runtime": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/register": "^7.6.0",
-    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
-    "coveralls": "^3.0.6",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
-    "enzyme": "^3.10.0",
-    "enzyme-to-json": "^3.4.0",
-    "eslint": "^6.3.0",
-    "jest": "^24.9.0",
-    "jquery": "^3.4.1",
+    "jquery-inview": "^1.1.2",
     "speed-measure-webpack-plugin": "^1.3.1",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8"
+  },
+  "devDependencies": {
+    "babel-jest": "^24.9.0",
+    "enzyme": "^3.10.0",
+    "enzyme-to-json": "^3.4.0",
+    "eslint": "^6.3.0",
+    "jest": "^24.9.0"
   }
 }
