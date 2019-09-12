@@ -47,14 +47,8 @@ jobs:
 
     - stage: test
       language: node_js
-      node_js: '10'
-      dist: trusty
-      script: bash travis-ci/bin/js/js-test.sh
-    - stage: test
-      language: node_js
       node_js: '11'
       dist: trusty
-      env: COVERAGE_REPORT=1
       script: bash travis-ci/bin/js/js-test.sh
 
     - stage: deploy
