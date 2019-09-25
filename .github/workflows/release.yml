@@ -6,7 +6,7 @@ name: Release
 
 jobs:
   test:
-    name: Test
+    name: Publish Package
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -76,7 +76,6 @@ jobs:
           git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
           bash travis-ci/bin/deploy/gh-pages.sh
         env:
-          CI: 1
           TRAVIS_BUILD_DIR: ${{ github.workspace }}
           GH_PAGES_TITLE: jQuery Marker Animation
           GH_PAGES_TRACKING_ID: UA-78163306-3
