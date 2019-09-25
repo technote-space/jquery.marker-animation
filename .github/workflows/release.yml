@@ -69,6 +69,8 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 3
+      - name: Install Package dependencies
+        run: yarn install
       - name: Build
         run: |
           git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
@@ -101,6 +103,8 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 3
+      - name: Install Package dependencies
+        run: yarn install
       - name: Build
         run: yarn build
       - name: Upload
