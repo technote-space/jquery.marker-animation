@@ -60,3 +60,22 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: gh-pages
+
+  releases:
+    name: Upload build files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 3
+      - name: Build
+        run: yarn build
+      - name: Upload
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: jquery.marker-animation.min.js
+          asset_name: jquery.marker-animation.min.js
+          tag: ${{ github.ref }}
+          overwrite: true
