@@ -5,7 +5,7 @@ on:
 name: Release
 
 jobs:
-  release:
+  test:
     name: Publish Package
     runs-on: ubuntu-latest
     steps:
@@ -21,6 +21,29 @@ jobs:
         run: yarn install
       - name: Test
         run: yarn test
+      - uses: 8398a7/action-slack@v1
+        with:
+          type: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: failure()
+
+  release:
+    name: Publish Package
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 3
+      - name: Check package version
+        uses: technote-space/ga-package-version-checker@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Package dependencies
+        run: yarn install
       - name: Build
         run: yarn build
       - name: Publish
@@ -39,12 +62,15 @@ jobs:
 
   pages:
     name: Publish GitHub Pages
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@master
         with:
           fetch-depth: 3
+      - name: Install Package dependencies
+        run: yarn install
       - name: Build
         run: |
           git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
@@ -60,15 +86,25 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: gh-pages
+      - uses: 8398a7/action-slack@v1
+        with:
+          type: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: failure()
 
   releases:
     name: Upload build files
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@master
         with:
           fetch-depth: 3
+      - name: Install Package dependencies
+        run: yarn install
       - name: Build
         run: yarn build
       - name: Upload
@@ -79,3 +115,22 @@ jobs:
           asset_name: jquery.marker-animation.min.js
           tag: ${{ github.ref }}
           overwrite: true
+      - uses: 8398a7/action-slack@v1
+        with:
+          type: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: failure()
+
+  slack:
+    name: Slack
+    needs: [release, pages, releases]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: 8398a7/action-slack@v1
+        with:
+          type: success
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
