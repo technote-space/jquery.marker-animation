@@ -2,3 +2,29 @@ on:
   push:
     tags:
       - 'v*'
+name: Release
+
+jobs:
+  pages:
+    name: Publish GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 3
+      - name: Build
+        run: |
+          git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
+          bash travis-ci/bin/deploy/gh-pages.sh
+        env:
+          CI: 1
+          TRAVIS_BUILD_DIR: ${{ github.workspace }}
+          GH_PAGES_TITLE: jQuery Marker Animation
+          GH_PAGES_TRACKING_ID: UA-78163306-3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: gh-pages
