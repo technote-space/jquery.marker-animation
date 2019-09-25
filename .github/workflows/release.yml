@@ -5,7 +5,7 @@ on:
 name: Release
 
 jobs:
-  release:
+  test:
     name: Publish Package
     runs-on: ubuntu-latest
     steps:
@@ -21,6 +21,22 @@ jobs:
         run: yarn install
       - name: Test
         run: yarn test
+
+  release:
+    name: Publish Package
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 3
+      - name: Check package version
+        uses: technote-space/ga-package-version-checker@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Package dependencies
+        run: yarn install
       - name: Build
         run: yarn build
       - name: Publish
@@ -39,6 +55,7 @@ jobs:
 
   pages:
     name: Publish GitHub Pages
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -63,6 +80,7 @@ jobs:
 
   releases:
     name: Upload build files
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
