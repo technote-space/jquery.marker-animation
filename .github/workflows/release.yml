@@ -1,0 +1,81 @@
+on:
+  push:
+    tags:
+      - 'v*'
+name: Release
+
+jobs:
+  release:
+    name: Publish Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 3
+      - name: Check package version
+        uses: technote-space/ga-package-version-checker@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Package dependencies
+        run: yarn install
+      - name: Test
+        run: yarn test
+      - name: Build
+        run: yarn build
+      - name: Publish
+        uses: actions/npm@master
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        with:
+          args: publish
+      - uses: 8398a7/action-slack@v1
+        with:
+          type: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: failure()
+
+  pages:
+    name: Publish GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 3
+      - name: Build
+        run: |
+          git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
+          bash travis-ci/bin/deploy/gh-pages.sh
+        env:
+          CI: 1
+          TRAVIS_BUILD_DIR: ${{ github.workspace }}
+          GH_PAGES_TITLE: jQuery Marker Animation
+          GH_PAGES_TRACKING_ID: UA-78163306-3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: gh-pages
+
+  releases:
+    name: Upload build files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 3
+      - name: Build
+        run: yarn build
+      - name: Upload
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: jquery.marker-animation.min.js
+          asset_name: jquery.marker-animation.min.js
+          tag: ${{ github.ref }}
+          overwrite: true

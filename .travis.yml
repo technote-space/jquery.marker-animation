@@ -17,7 +17,6 @@ notifications:
 branches:
   only:
     - master
-    - "/^v[0-9\\.]+/"
 
 cache:
   yarn: true
@@ -30,8 +29,6 @@ stages:
     if: branch = master and tag IS blank and type IN (pull_request, api)
   - name: test
     if: branch = master and tag IS blank and type IN (pull_request, api)
-  - name: deploy
-    if: tag IS present
 
 before_script:
   - git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
@@ -50,59 +47,3 @@ jobs:
       node_js: '11'
       dist: trusty
       script: bash travis-ci/bin/js/js-test.sh
-
-    - stage: deploy
-      language: node_js
-      node_js: '11'
-      dist: trusty
-      script: skip
-      before_deploy:
-        - source travis-ci/bin/deploy/env.sh
-        - yarn build
-      deploy:
-        provider: releases
-        skip_cleanup: true
-        name: ${RELEASE_TITLE}
-        tag_name: ${RELEASE_TAG}
-        api_key:
-          secure: Eni1T7jImpOkUal4rLbuhXciBLcpKoRRdFQh32pIzi+9FVWkDNkXNGjBxT3qQveUhezBV6SughTkwRoV3v4Ovh5ADamlLE60B11iZMwXmSOXBbiFsYUp2pqZhoRaVhLj+ok7bAyNgddtYuMCI2fT2F+yp8y8nBHyhnDCBjK6aDa1teMJ5eA84iGyZR0ZfBawEv992g55QKzHTq3f4exERA/IqSBxTDPk1RmyZFUBHVzjhKImzydmie9aZyPkL+zxSEW/SXy134kDfCujTlqCki0cRYduaElH7pJFdsn3ihMtUM/c/iGT3AcM+x+E8WCOvNIklreJYMn8DWn/2xBCqpshh4NqwIWi04XT9ti9gAtgd0br/6HcNg0ckEnWtfFAJGOu+J/cgRwYgIdjSmVTBy5igyGp3X+PNMBz/Z3gi5EFNHVHaKzkHY3AAfqPn+xMLlaxm8uvE+y/hSk1lc1VLePCJ5/5UcizuFO91obWjMZw3Po5tbRpshxULiH332eFsrsdnM2OCApQCyqrOfGeefd38U8QMyjCDEJlvSml48AG4YiT7jBBwZcFhTBt1Q9DjMnhuT/ExHWzRnIDie0DY5R2HQhQtvIDJ1QleBJdxqrI/pgxOU7d07vGWJRgdZJdXXE7BNb/faCY6RnWS9moinuuolWk9hVWUz+lkw+XWXo=
-        file: "jquery.marker-animation.min.js"
-        overwrite: true
-        on:
-          tags: true
-
-    - stage: deploy
-      language: node_js
-      node_js: '11'
-      dist: trusty
-      script: skip
-      before_deploy: yarn build
-      deploy:
-        provider: npm
-        skip_cleanup: true
-        email: technote.space@gmail.com
-        api_key:
-          secure: E2n0AGDW4zKOhf0vfEjI+2L9tPw4SuW3vknG4DDYbkLCLZXRi0XZ16qhIuZShKtXhTDVgTYcM9SCcsdv5PU3FMcMpg3rftzjXIER+pZktPhQoMncrbIY43G7rDInsUSyOfETWcXXEVDSs6/l50YXYwPeKn7fxgom6g16di5tzfKC7U0Ud39BvZXl7LJYUwb+pDtJ4gATJkd8GhyZ+fyZ+nVvSWdEvFBf2tru/2YbnH8U2Y8J2lcWl2RjHpwz8xKYTmak6BRmN9WLrpNeSUAzzus9TCe4c7l+pY4Na4uGBnC1c/8VR46eNHkIRGEgNoxwWMlbv60iSTqnMH2//2l3Rj55HBaHzzlNsRPWteKSPoj13hN9yp1/LqJsDBW3ga+p+7hjt+JEgQYh1y+sa/GlvMYsX7vyYwipOBtSw9zSUmOj/b8NGLqb+sL6a3Pjr0ObKcjojrE6US8FPTLwukRdLxYXF8wYN5EWOo50UXdImFYqmeKfdE/Vluq2/pyZA3MozsffBY6rv4/lNjuIS29dIt2lm+I79Zr/Q4VZjS7Sm4Cckd/c156HQX7uPZLKfHmFOoyZxSvLiJTh5fiSiHVbVl6jqO3yC6qx9FdJvLQKXboSgj00GXZWtebUuua6HW6Bf2XKDW+WN7cXSp2wu5TMLoXGLnVFDrfKBFDKzrMzCn0=
-        on:
-          tags: true
-
-    - stage: deploy
-      language: node_js
-      node_js: '11'
-      dist: trusty
-      env:
-        - GH_PAGES_TITLE="jQuery Marker Animation"
-        - GH_PAGES_TRACKING_ID=UA-78163306-3
-      script: skip
-      before_deploy:
-        - bash travis-ci/bin/prepare.sh
-        - source travis-ci/bin/deploy/env.sh
-        - bash travis-ci/bin/deploy/gh-pages.sh
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        github_token: ${GITHUB_TOKEN}
-        keep_history: true
-        local_dir: ${GH_PAGES_DIR}
-        on:
-          tags: true

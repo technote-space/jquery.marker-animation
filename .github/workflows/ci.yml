@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
         with:
-          fetch-depth: 1
+          fetch-depth: 3
       - name: Install Package dependencies
         run: yarn install
       - name: Check code style
@@ -34,15 +34,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node_version: [10, 11, 12]
+        node: ['8', '10', '11', '12']
     steps:
       - uses: actions/checkout@v1
         with:
-          fetch-depth: 1
-      - name: Use Node.js ${{ matrix.node_version }}
+          fetch-depth: 3
+      - name: Setup node
         uses: actions/setup-node@v1
         with:
-          version: ${{ matrix.node_version }}
+          node-version: ${{ matrix.node }}
       - name: Install Package dependencies
         run: yarn install
       - name: Run tests
@@ -60,7 +60,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         if: failure()
 
-  parallel-finished:
+  coverallsFinished:
     name: Coveralls Finished
     needs: jest
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
 
   slack:
     name: Slack
-    needs: parallel-finished
+    needs: coverallsFinished
     runs-on: ubuntu-latest
     steps:
       - uses: 8398a7/action-slack@v1
