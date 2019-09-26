@@ -1,6 +1,6 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Marker animation jQuery plugin",
   "main": "jquery.marker-animation.min.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "cover": "jest --coverage",
     "cover:update": "jest --coverage --updateSnapshot",
     "develop": "webpack --mode development --config webpack.config.js",
-    "build": "webpack --mode production --config webpack.config.js"
+    "build": "webpack --mode production --config webpack.config.js",
+    "update": "ncu -u && yarn upgrade && yarn audit"
   },
   "repository": {
     "type": "git",
