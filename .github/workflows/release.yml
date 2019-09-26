@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 3
       - name: Check package version
-        uses: technote-space/ga-package-version-checker@v1
+        uses: technote-space/package-version-check-action@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install Package dependencies
@@ -39,10 +39,6 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 3
-      - name: Check package version
-        uses: technote-space/ga-package-version-checker@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install Package dependencies
         run: yarn install
       - name: Build
