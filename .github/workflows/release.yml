@@ -2,11 +2,12 @@ on:
   push:
     tags:
       - 'v*'
+
 name: Release
 
 jobs:
   test:
-    name: Publish Package
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
