@@ -11,7 +11,8 @@
     "cover": "jest --coverage",
     "cover:update": "jest --coverage --updateSnapshot",
     "develop": "webpack --mode development --config webpack.config.js",
-    "build": "webpack --mode production --config webpack.config.js"
+    "build": "webpack --mode production --config webpack.config.js",
+    "update": "ncu -u && yarn upgrade && yarn audit"
   },
   "repository": {
     "type": "git",
