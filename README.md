@@ -20,9 +20,9 @@ jQuery plugin to add under line animation like highlighter.
 - [Screenshot](#screenshot)
   - [Behavior](#behavior)
 - [Installation](#installation)
-  - [Use from download](#use-from-download)
-  - [Use from npm](#use-from-npm)
-  - [for WordPress](#for-wordpress)
+  - [npm](#npm)
+  - [Browser](#browser)
+  - [WordPress](#wordpress)
 - [Usage](#usage)
 - [Options](#options)
   - [color](#color)
@@ -43,19 +43,20 @@ jQuery plugin to add under line animation like highlighter.
 ![Behavior](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/marker-animation.gif)
 
 ## Installation
-### Use from download
-Download [Release version](https://github.com/technote-space/jquery.marker-animation/releases/latest/download/jquery.marker-animation.min.js) and enqueue script.
-```html
-<script type="text/javascript" src="/assets/jquery.marker-animation.min.js"></script>
-```
-### Use from npm
+### npm
 https://www.npmjs.com/package/jquery.marker-animation
 
 ```bash
 npm install --save jquery.marker-animation
 ```
 
-### for WordPress
+### Browser
+Download [Release version](https://github.com/technote-space/jquery.marker-animation/releases/latest/download/index.js) and enqueue script.
+```html
+<script type="text/javascript" src="/assets/jquery.marker-animation/index.js"></script>
+```
+
+### WordPress
 [GitHub](https://github.com/technote-space/marker-animation)
 
 ## Usage

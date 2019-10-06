@@ -17,7 +17,7 @@ jobs:
       - name: Check package version
         uses: technote-space/package-version-check-action@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Install Package dependencies
         run: yarn install
       - name: Test
@@ -106,7 +106,7 @@ jobs:
       - name: Upload
         uses: technote-fork/action-gh-release@v1
         with:
-          files: jquery.marker-animation.min.js
+          files: build/index.js
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
