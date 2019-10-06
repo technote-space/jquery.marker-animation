@@ -43,18 +43,19 @@
 ![動作](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/marker-animation.gif)
 
 ## Installation
-### ダウンロードして利用
-[リリースバージョン](https://github.com/technote-space/jquery.marker-animation/releases/latest/download/jquery.marker-animation.min.js)をダウンロードして
-```html
-<script type="text/javascript" src="/assets/jquery.marker-animation.min.js"></script>
-```
-のように読み込む
 ### npmから利用
 https://www.npmjs.com/package/jquery.marker-animation
 
 ```bash
 npm install --save jquery.marker-animation
 ```
+
+### ダウンロードして利用
+[リリースバージョン](https://github.com/technote-space/jquery.marker-animation/releases/latest/download/index.js)をダウンロードして
+```html
+<script type="text/javascript" src="/assets/jquery.marker-animation/index.js"></script>
+```
+のように読み込む
 
 ### WordPressで利用
 プラグインとして利用できるようにしました。  
