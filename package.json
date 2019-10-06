@@ -1,6 +1,6 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "Marker animation jQuery plugin",
   "main": "build/index.js",
   "files": [
@@ -49,8 +49,8 @@
   "devDependencies": {
     "babel-jest": "^24.9.0",
     "enzyme": "^3.10.0",
-    "enzyme-to-json": "^3.4.0",
-    "eslint": "^6.4.0",
+    "enzyme-to-json": "^3.4.2",
+    "eslint": "^6.5.1",
     "jest": "^24.9.0"
   }
 }
