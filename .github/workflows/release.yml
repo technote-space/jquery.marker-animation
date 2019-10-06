@@ -106,7 +106,7 @@ jobs:
       - name: Upload
         uses: technote-fork/action-gh-release@v1
         with:
-          files: jquery.marker-animation.min.js
+          files: build/index.js
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
