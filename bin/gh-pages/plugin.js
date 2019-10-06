@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import './jquery.marker-animation.min';
+import './index';
 import './plugin.scss';
 
 $( () => {
