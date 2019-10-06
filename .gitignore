@@ -1,7 +1,7 @@
 node_modules/
 /coverage
 /.idea
-/jquery.marker-animation.min.js
+/build
 /travis-ci
 /gh-pages
 .work/

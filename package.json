@@ -2,7 +2,10 @@
   "name": "jquery.marker-animation",
   "version": "1.4.3",
   "description": "Marker animation jQuery plugin",
-  "main": "jquery.marker-animation.min.js",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "start": "yarn build",
     "test": "yarn lint && yarn cover",
