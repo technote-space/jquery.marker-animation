@@ -44,11 +44,11 @@ jobs:
       - name: Build
         run: yarn build
       - name: Publish
-        uses: actions/npm@master
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
+          npm publish
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        with:
-          args: publish
       - uses: 8398a7/action-slack@v1
         with:
           type: failure
