@@ -102,6 +102,13 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 3
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - name: Install Package dependencies
         run: yarn install
       - name: Build
@@ -135,6 +142,13 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 3
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - name: Install Package dependencies
         run: yarn install
       - name: Build
