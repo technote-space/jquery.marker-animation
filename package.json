@@ -1,6 +1,6 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "Marker animation jQuery plugin",
   "main": "build/index.js",
   "files": [
@@ -10,7 +10,8 @@
     "start": "yarn build",
     "test": "yarn lint && yarn cover",
     "test:update": "yarn lint && yarn cover:update",
-    "lint": "eslint src/**/**/*.js && eslint __tests__/**/**/*.js",
+    "lint": "eslint src/**/**/*.js __tests__/**/**/*.js",
+    "lint:fix": "eslint --fix src/**/**/*.ts __tests__/**/**/*.ts",
     "cover": "jest --coverage",
     "cover:update": "jest --coverage --updateSnapshot",
     "develop": "webpack --mode development --config webpack.config.js",
@@ -33,24 +34,24 @@
   "homepage": "https://github.com/technote-space/jquery.marker-animation#readme",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/register": "^7.6.2",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
+    "@babel/plugin-transform-react-jsx": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/register": "^7.7.4",
     "babel-loader": "^8.0.6",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "jquery-inview": "^1.1.2",
     "speed-measure-webpack-plugin": "^1.3.1",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
     "babel-jest": "^24.9.0",
     "enzyme": "^3.10.0",
-    "enzyme-to-json": "^3.4.2",
-    "eslint": "^6.5.1",
+    "enzyme-to-json": "^3.4.3",
+    "eslint": "^6.7.2",
     "jest": "^24.9.0"
   }
 }

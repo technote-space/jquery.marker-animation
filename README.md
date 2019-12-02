@@ -1,7 +1,7 @@
 # jQuery Marker Animation
 
 [![npm version](https://badge.fury.io/js/jquery.marker-animation.svg)](https://badge.fury.io/js/jquery.marker-animation)
-[![Build Status](https://github.com/technote-space/jquery.marker-animation/workflows/Build/badge.svg)](https://github.com/technote-space/jquery.marker-animation/actions)
+[![CI Status](https://github.com/technote-space/jquery.marker-animation/workflows/CI/badge.svg)](https://github.com/technote-space/jquery.marker-animation/actions)
 [![Build Status](https://travis-ci.com/technote-space/jquery.marker-animation.svg?branch=master)](https://travis-ci.com/technote-space/jquery.marker-animation)
 [![codecov](https://codecov.io/gh/technote-space/jquery.marker-animation/branch/master/graph/badge.svg)](https://codecov.io/gh/technote-space/jquery.marker-animation)
 [![CodeFactor](https://www.codefactor.io/repository/github/technote-space/jquery.marker-animation/badge)](https://www.codefactor.io/repository/github/technote-space/jquery.marker-animation)
