@@ -1,6 +1,6 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.4.10",
+  "version": "1.4.11",
   "description": "Marker animation jQuery plugin",
   "main": "build/index.js",
   "files": [
