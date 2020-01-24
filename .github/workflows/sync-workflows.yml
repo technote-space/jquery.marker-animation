@@ -21,8 +21,12 @@ jobs:
             cp -f .github/workflows/sync-workflows.yml .github/workflows/.tmp/ > /dev/null 2>&1 || :
             rm -f .github/workflows/*.yml
             git clone --depth=1 https://github.com/technote-space/github-actions-workflows.git .github/workflows/.tmp/workflows
-            cp .github/workflows/.tmp/workflows/js-repo/*.yml .github/workflows/
+            cp .github/workflows/.tmp/workflows/js-repo-pages/*.yml .github/workflows/
             cp -f .github/workflows/.tmp/sync-workflows.yml .github/workflows/sync-workflows.yml > /dev/null 2>&1 || :
+            sed -i "s/target: \['npm', 'gpr'\]/target: ['npm']/" .github/workflows/release.yml
+            sed -i "/GH_PAGES_PLUGIN_SCRIPT/d" .github/workflows/release.yml
+            sed -i "/GH_PAGES_TEMPLATE/d" .github/workflows/release.yml
+            sed -i "s/GH_PAGES_TITLE:.*$/GH_PAGES_TITLE: jQuery Marker Animation/" .github/workflows/release.yml
             rm -rdf .github/workflows/.tmp
           COMMIT_MESSAGE: 'chore: sync workflows'
           PR_BRANCH_PREFIX: chore/
