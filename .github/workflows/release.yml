@@ -2,6 +2,8 @@ on:
   push:
     tags:
       - 'v*'
+  repository_dispatch:
+    types: [release]
 
 name: Release
 
@@ -17,6 +19,7 @@ jobs:
       - name: Get Yarn Cache Directory
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
+        if: github.event_name != 'repository_dispatch'
       - name: Cache node dependencies
         uses: actions/cache@v1
         with:
@@ -24,6 +27,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+        if: github.event_name != 'repository_dispatch'
       - name: Install Package dependencies
         run: yarn install
       - name: Test
@@ -39,6 +43,7 @@ jobs:
   release:
     name: Publish Package
     runs-on: ubuntu-latest
+    if: github.event_name != 'repository_dispatch'
     strategy:
       matrix:
         target: ['npm']
@@ -111,6 +116,7 @@ jobs:
       - name: Get Yarn Cache Directory
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
+        if: github.event_name != 'repository_dispatch'
       - name: Cache node dependencies
         uses: actions/cache@v1
         with:
@@ -118,6 +124,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+        if: github.event_name != 'repository_dispatch'
       - name: Install Package dependencies
         run: yarn install
       - name: Build
@@ -146,6 +153,7 @@ jobs:
     name: Upload build files
     needs: test
     runs-on: ubuntu-latest
+    if: github.event_name != 'repository_dispatch'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
