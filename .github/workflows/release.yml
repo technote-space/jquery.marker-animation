@@ -19,7 +19,6 @@ jobs:
       - name: Get Yarn Cache Directory
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
-        if: github.event_name != 'repository_dispatch'
       - name: Cache node dependencies
         uses: actions/cache@v1
         with:
@@ -27,7 +26,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-        if: github.event_name != 'repository_dispatch'
       - name: Install Package dependencies
         run: yarn install
       - name: Test
@@ -116,7 +114,6 @@ jobs:
       - name: Get Yarn Cache Directory
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
-        if: github.event_name != 'repository_dispatch'
       - name: Cache node dependencies
         uses: actions/cache@v1
         with:
@@ -124,7 +121,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-        if: github.event_name != 'repository_dispatch'
       - name: Install Package dependencies
         run: yarn install
       - name: Build
@@ -174,7 +170,7 @@ jobs:
       - name: Build
         run: yarn build
       - name: Upload
-        uses: technote-fork/action-gh-release@v1
+        uses: technote-space/action-gh-release@v2
         with:
           files: build/index.js
           draft: true
