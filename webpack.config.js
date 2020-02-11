@@ -1,16 +1,16 @@
-const SpeedMeasurePlugin = require( 'speed-measure-webpack-plugin' );
-const DuplicatePackageCheckerPlugin = require( 'duplicate-package-checker-webpack-plugin' );
-const webpack = require( 'webpack' );
-const pkg = require( './package' );
-const path = require( 'path' );
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const webpack = require('webpack');
+const pkg = require('./package');
+const path = require('path');
 
-const banner = `${ pkg.name } ${ pkg.version } - ${ pkg.description }\nCopyright (c) ${ new Date().getFullYear() } ${ pkg.author } - ${ pkg.homepage }\nLicense: ${ pkg.license }`;
+const banner = `${pkg.name} ${pkg.version} - ${pkg.description}\nCopyright (c) ${new Date().getFullYear()} ${pkg.author} - ${pkg.homepage}\nLicense: ${pkg.license}`;
 
 const webpackConfig = {
-	context: path.resolve( __dirname, 'src' ),
+	context: path.resolve(__dirname, 'src'),
 	entry: './index.js',
 	output: {
-		path: path.resolve( __dirname, 'build' ),
+		path: path.resolve(__dirname, 'build'),
 		filename: 'index.js',
 		library: 'MarkerAnimation',
 		libraryTarget: 'umd',
@@ -33,9 +33,9 @@ const webpackConfig = {
 		},
 	},
 	plugins: [
-		new webpack.BannerPlugin( banner ),
+		new webpack.BannerPlugin(banner),
 		new DuplicatePackageCheckerPlugin(),
 	],
 };
 
-module.exports = ( new SpeedMeasurePlugin() ).wrap( webpackConfig );
+module.exports = (new SpeedMeasurePlugin()).wrap(webpackConfig);
