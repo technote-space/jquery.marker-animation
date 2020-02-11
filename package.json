@@ -2,56 +2,61 @@
   "name": "jquery.marker-animation",
   "version": "1.4.14",
   "description": "Marker animation jQuery plugin",
-  "main": "build/index.js",
-  "files": [
-    "build"
-  ],
-  "scripts": {
-    "start": "yarn build",
-    "test": "yarn lint && yarn cover",
-    "test:update": "yarn lint && yarn cover:update",
-    "lint": "eslint 'src/**/*.js' '__tests__/**/*.js'",
-    "lint:fix": "eslint --fix 'src/**/*.js' '__tests__/**/*.js'",
-    "cover": "jest --coverage",
-    "cover:update": "jest --coverage --updateSnapshot",
-    "develop": "webpack --mode development --config webpack.config.js",
-    "build": "webpack --mode production --config webpack.config.js",
-    "update": "ncu -u && yarn install && yarn upgrade && yarn audit"
+  "author": {
+    "name": "Technote",
+    "email": "technote.space@gmail.com",
+    "url": "https://technote.space"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/technote-space/jquery.marker-animation.git"
-  },
+  "license": "MIT",
   "keywords": [
     "jquery-plugin",
     "marker animation",
     "highlighter"
   ],
-  "author": "Technote <technote.space@gmail.com> (https://technote.space)",
+  "homepage": "https://github.com/technote-space/jquery.marker-animation#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/technote-space/jquery.marker-animation.git"
+  },
   "bugs": {
     "url": "https://github.com/technote-space/jquery.marker-animation/issues"
   },
-  "homepage": "https://github.com/technote-space/jquery.marker-animation#readme",
-  "license": "MIT",
-  "dependencies": {
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
     "@babel/plugin-transform-react-jsx": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/register": "^7.8.3",
+    "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
-    "jquery-inview": "^1.1.2",
-    "speed-measure-webpack-plugin": "^1.3.1",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
-  },
-  "devDependencies": {
-    "babel-jest": "^25.1.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "jquery-inview": "^1.1.2",
+    "speed-measure-webpack-plugin": "^1.3.1",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.js",
+    "start": "yarn build",
+    "test": "yarn lint && yarn cover",
+    "test:update": "yarn lint && yarn cover:update",
+    "lint": "eslint 'src/**/*.js' '__tests__/**/*.js' --cache",
+    "lint:fix": "eslint --fix 'src/**/*.js' '__tests__/**/*.js'",
+    "cover": "jest --coverage",
+    "cover:update": "jest --coverage --updateSnapshot",
+    "develop": "webpack --mode development --config webpack.config.js",
+    "update": "ncu -u && yarn install && yarn upgrade && yarn audit"
   }
 }
