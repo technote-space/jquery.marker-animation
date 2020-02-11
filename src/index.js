@@ -2,6 +2,8 @@ require('jquery-inview');
 import $ from 'jquery';
 import { setup } from './setup';
 
-$.fn.markerAnimation = (...args) => {
-	return this.each(() => setup($(this), args));
+$.fn.markerAnimation = function(...args) {
+	return this.each(function() {
+		setup($(this), args);
+	});
 };

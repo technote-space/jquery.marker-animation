@@ -9,5 +9,7 @@ export const SETTINGS_DEFAULTS = {
 	repeat: false,
 	stripe: false,
 	'stripe_thickness': 2,
-	cssFilter: css => css,
+	cssFilter: function(css) {
+		return css;
+	},
 };
