@@ -15,7 +15,8 @@ jQuery plugin to add under line animation like highlighter.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
+<details>
+<summary>Details</summary>
 
 - [Screenshot](#screenshot)
   - [Behavior](#behavior)
@@ -36,6 +37,7 @@ jQuery plugin to add under line animation like highlighter.
   - [e.g. Change color](#eg-change-color)
   - [e.g Multiple options](#eg-multiple-options)
 
+</details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Screenshot
