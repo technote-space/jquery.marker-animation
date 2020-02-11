@@ -13,9 +13,12 @@
 
 [デモ](https://technote-space.github.io/jquery.marker-animation/)
 
+## Table of Contents
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
+<details>
+<summary>Details</summary>
 
 - [スクリーンショット](#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88)
   - [動作](#%E5%8B%95%E4%BD%9C)
@@ -36,6 +39,7 @@
   - [例1: 色の変更](#%E4%BE%8B1-%E8%89%B2%E3%81%AE%E5%A4%89%E6%9B%B4)
   - [例2: 複数設定](#%E4%BE%8B2-%E8%A4%87%E6%95%B0%E8%A8%AD%E5%AE%9A)
 
+</details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## スクリーンショット
