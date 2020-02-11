@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: 0 15 * * 4
+    - cron: 0 12 * * 4
   repository_dispatch:
     types: [sync-workflows]
 
@@ -22,10 +22,10 @@ jobs:
 
             bash .github/workflows/.tmp/workflows/js-repo/copy.sh release-pages-releases
             sed -i 's/cron:.\+$/cron: 0 3 * * 6/' .github/workflows/update-dependencies.yml
-            sed -i "s/target: \['npm', 'gpr'\]/target: ['npm']/" .github/workflows/release.yml
-            sed -i "/GH_PAGES_PLUGIN_SCRIPT/d" .github/workflows/release.yml
-            sed -i "/GH_PAGES_TEMPLATE/d" .github/workflows/release.yml
-            sed -i "s/GH_PAGES_TITLE:.*$/GH_PAGES_TITLE: jQuery Marker Animation/" .github/workflows/release.yml
+            sed -i "s/target: \['npm', 'gpr'\]/target: ['npm']/" .github/workflows/ci.yml
+            sed -i "/GH_PAGES_PLUGIN_SCRIPT/d" .github/workflows/ci.yml
+            sed -i "/GH_PAGES_TEMPLATE/d" .github/workflows/ci.yml
+            sed -i "s/GH_PAGES_TITLE:.*$/GH_PAGES_TITLE: jQuery Marker Animation/" .github/workflows/ci.yml
 
             rm -rdf .github/workflows/.tmp
           COMMIT_MESSAGE: 'chore: sync workflows'
