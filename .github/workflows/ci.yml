@@ -44,15 +44,11 @@ jobs:
         run: yarn install
         if: env.RUNNING
       - name: Check code style
-        run: yarn eslint ${{ env.GIT_DIFF }}
-        if: env.RUNNING
-      - uses: 8398a7/action-slack@v2
-        with:
-          status: failure
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: failure()
+        run: yarn eslint ${{ env.GIT_DIFF_FILTERED }}
+        if: env.RUNNING && env.GIT_DIFF_FILTERED
+      - name: Check code style
+        run: yarn lint
+        if: env.RUNNING && !env.GIT_DIFF_FILTERED
 
   cover:
     name: Coverage
@@ -84,7 +80,7 @@ jobs:
         run: echo "::set-env name=RUNNING::"
         if: "! env.GIT_DIFF"
       - name: Set running flag
-        if: matrix.node == '12' && github.ref == join('refs/heads/', github.event.repository.default_branch)
+        if: matrix.node == '12' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         run: echo "::set-env name=RUNNING::1"
       - name: Set running flag
         run: |
@@ -124,13 +120,6 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           COVERAGE_FILE: ./coverage/lcov.info
         if: env.RUNNING && matrix.node == '12'
-      - uses: 8398a7/action-slack@v2
-        with:
-          status: failure
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: failure()
 
   package:
     name: Publish Package
@@ -202,13 +191,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: env.RUNNING && matrix.target == 'gpr'
-      - uses: 8398a7/action-slack@v2
-        with:
-          status: failure
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: failure()
 
   pages:
     name: Publish GitHub Pages
@@ -246,13 +228,6 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: gh-pages
-      - uses: 8398a7/action-slack@v2
-        with:
-          status: failure
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: failure()
 
   releases:
     name: Upload build files
@@ -283,13 +258,6 @@ jobs:
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: 8398a7/action-slack@v2
-        with:
-          status: failure
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: failure()
 
   publishRelease:
     name: Create Release
@@ -315,11 +283,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always() && steps.drafter.outputs.html_url
+        if: success()
+
+  slack:
+    name: Slack
+    needs: publishRelease
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: 8398a7/action-slack@v2
         with:
-          status: ${{ job.status }}
+          status: failure
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always() && ! steps.drafter.outputs.html_url
+        if: env.WORKFLOW_CONCLUSION == 'failure'
