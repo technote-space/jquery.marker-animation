@@ -38,12 +38,12 @@ jobs:
   include:
     - stage: check
       language: node_js
-      node_js: '11'
+      node_js: '12'
       dist: trusty
       script: bash travis-ci/bin/js/js-lint.sh
 
     - stage: test
       language: node_js
-      node_js: '11'
+      node_js: '12'
       dist: trusty
       script: bash travis-ci/bin/js/js-test.sh
