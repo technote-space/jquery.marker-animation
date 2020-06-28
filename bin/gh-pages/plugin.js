@@ -3,7 +3,7 @@ import './index';
 import './plugin.scss';
 
 $(() => {
-	$('#app').html(`
+  $('#app').html(`
 <div>
 	<div class="">
 		This page is demonstration of <a href="https://github.com/technote-space/jquery.marker-animation">jQuery Marker Animation</a>.
@@ -82,8 +82,8 @@ $(() => {
 	</div>
 </div>`);
 
-	$('#app .marker-animation').markerAnimation();
-	$('#app .reset-animation').on('click', () => {
-		$('#app .marker-animation').markerAnimation('refresh');
-	});
+  $('#app .marker-animation').markerAnimation();
+  $('#app .reset-animation').on('click', () => {
+    $('#app .marker-animation').markerAnimation('refresh');
+  });
 });
