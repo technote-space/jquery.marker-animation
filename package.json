@@ -1,30 +1,42 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.4.31",
+  "version": "1.5.0",
   "description": "Marker animation jQuery plugin",
-  "author": {
-    "name": "Technote",
-    "email": "technote.space@gmail.com",
-    "url": "https://technote.space"
-  },
-  "license": "MIT",
   "keywords": [
     "jquery-plugin",
     "marker animation",
     "highlighter"
   ],
   "homepage": "https://github.com/technote-space/jquery.marker-animation#readme",
+  "bugs": {
+    "url": "https://github.com/technote-space/jquery.marker-animation/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/technote-space/jquery.marker-animation.git"
   },
-  "bugs": {
-    "url": "https://github.com/technote-space/jquery.marker-animation/issues"
+  "license": "MIT",
+  "author": {
+    "name": "Technote",
+    "email": "technote.space@gmail.com",
+    "url": "https://technote.space"
   },
   "main": "build/index.js",
   "files": [
     "build"
   ],
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.js",
+    "cover": "jest --coverage",
+    "cover:update": "jest --coverage --updateSnapshot",
+    "develop": "webpack --mode development --config webpack.config.js",
+    "lint": "eslint 'src/**/*.js' '__tests__/**/*.js' --cache",
+    "lint:fix": "eslint --fix 'src/**/*.js' '__tests__/**/*.js'",
+    "start": "yarn build",
+    "test": "yarn lint && yarn cover",
+    "test:update": "yarn lint && yarn cover:update",
+    "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
@@ -46,17 +58,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build": "webpack --mode production --config webpack.config.js",
-    "start": "yarn build",
-    "test": "yarn lint && yarn cover",
-    "test:update": "yarn lint && yarn cover:update",
-    "lint": "eslint 'src/**/*.js' '__tests__/**/*.js' --cache",
-    "lint:fix": "eslint --fix 'src/**/*.js' '__tests__/**/*.js'",
-    "cover": "jest --coverage",
-    "cover:update": "jest --coverage --updateSnapshot",
-    "develop": "webpack --mode development --config webpack.config.js",
-    "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit"
   }
 }
