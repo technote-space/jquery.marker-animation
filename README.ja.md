@@ -35,6 +35,7 @@
   - [font_weight](#font_weight)
   - [repeat](#repeat)
   - [stripe](#stripe)
+  - [rtl](#rtl)
 - [個別に値を指定する方法](#%E5%80%8B%E5%88%A5%E3%81%AB%E5%80%A4%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95)
   - [例1: 色の変更](#%E4%BE%8B1-%E8%89%B2%E3%81%AE%E5%A4%89%E6%9B%B4)
   - [例2: 複数設定](#%E4%BE%8B2-%E8%A4%87%E6%95%B0%E8%A8%AD%E5%AE%9A)
@@ -85,6 +86,7 @@ $('.marker-animation').markerAnimation({
     color: '#fe9'
 });
 ```
+
 ### thickness
 マーカーの太さを指定
 ```javascript
@@ -92,6 +94,7 @@ $('.marker-animation').markerAnimation({
     thickness: '.6em'
 });
 ```
+
 ### duration
 マーカーを塗るのを完了するまでの時間を指定
 ```javascript
@@ -99,6 +102,7 @@ $('.marker-animation').markerAnimation({
     duration: '2s'
 });
 ```
+
 ### delay
 マーカーを塗るのを開始するまでの時間を指定
 ```javascript
@@ -106,6 +110,7 @@ $('.marker-animation').markerAnimation({
     duration: '.1s'
 });
 ```
+
 ### font_weight
 文字の太さを指定
 ```javascript
@@ -115,6 +120,7 @@ $('.marker-animation').markerAnimation({
 ```
 デフォルトは太字です。  
 太字にしない場合はnullを設定してください。
+
 ### repeat
 アニメーションを繰り返すかどうかを指定
 ```javascript
@@ -123,6 +129,7 @@ $('.marker-animation').markerAnimation({
 });
 ```
 trueにすると一度画面から外れて再び表示された際に再度アニメーションが実行されます。
+
 ### stripe
 ストライプデザインにするかどうかを指定
 ```javascript
@@ -132,6 +139,14 @@ $('.marker-animation').markerAnimation({
 ```
 これが `true` の場合はアニメーションなしの動作になります。  
 ![stripe](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/stripe.png)
+
+### rtl
+右書き動作にするかどうかを指定
+```javascript
+$('.marker-animation').markerAnimation({
+    rtl: false
+});
+```
 
 ## 個別に値を指定する方法
 `data-ma_[オプション名]` の形式で個別にオプションを指定することが可能です。

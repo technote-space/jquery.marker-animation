@@ -1,30 +1,42 @@
 {
   "name": "jquery.marker-animation",
-  "version": "1.4.30",
+  "version": "1.5.0",
   "description": "Marker animation jQuery plugin",
-  "author": {
-    "name": "Technote",
-    "email": "technote.space@gmail.com",
-    "url": "https://technote.space"
-  },
-  "license": "MIT",
   "keywords": [
     "jquery-plugin",
     "marker animation",
     "highlighter"
   ],
   "homepage": "https://github.com/technote-space/jquery.marker-animation#readme",
+  "bugs": {
+    "url": "https://github.com/technote-space/jquery.marker-animation/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/technote-space/jquery.marker-animation.git"
   },
-  "bugs": {
-    "url": "https://github.com/technote-space/jquery.marker-animation/issues"
+  "license": "MIT",
+  "author": {
+    "name": "Technote",
+    "email": "technote.space@gmail.com",
+    "url": "https://technote.space"
   },
   "main": "build/index.js",
   "files": [
     "build"
   ],
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.js",
+    "cover": "jest --coverage",
+    "cover:update": "jest --coverage --updateSnapshot",
+    "develop": "webpack --mode development --config webpack.config.js",
+    "lint": "eslint 'src/**/*.js' '__tests__/**/*.js' --cache",
+    "lint:fix": "eslint --fix 'src/**/*.js' '__tests__/**/*.js'",
+    "start": "yarn build",
+    "test": "yarn lint && yarn cover",
+    "test:update": "yarn lint && yarn cover:update",
+    "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
@@ -32,31 +44,19 @@
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/register": "^7.11.5",
-    "babel-jest": "^26.3.0",
+    "babel-jest": "^26.5.2",
     "babel-loader": "^8.1.0",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "enzyme": "^3.11.0",
-    "enzyme-to-json": "^3.5.0",
-    "eslint": "^7.9.0",
-    "jest": "^26.4.2",
+    "enzyme-to-json": "^3.6.1",
+    "eslint": "^7.11.0",
+    "jest": "^26.5.3",
     "jquery-inview": "^1.1.2",
     "speed-measure-webpack-plugin": "^1.3.3",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build": "webpack --mode production --config webpack.config.js",
-    "start": "yarn build",
-    "test": "yarn lint && yarn cover",
-    "test:update": "yarn lint && yarn cover:update",
-    "lint": "eslint 'src/**/*.js' '__tests__/**/*.js' --cache",
-    "lint:fix": "eslint --fix 'src/**/*.js' '__tests__/**/*.js'",
-    "cover": "jest --coverage",
-    "cover:update": "jest --coverage --updateSnapshot",
-    "develop": "webpack --mode development --config webpack.config.js",
-    "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit"
   }
 }

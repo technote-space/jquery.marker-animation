@@ -35,6 +35,7 @@ jQuery plugin to add under line animation like highlighter.
   - [font_weight](#font_weight)
   - [repeat](#repeat)
   - [stripe](#stripe)
+  - [rtl](#rtl)
 - [How to set the value for each](#how-to-set-the-value-for-each)
   - [e.g. Change color](#eg-change-color)
   - [e.g Multiple options](#eg-multiple-options)
@@ -82,6 +83,7 @@ $('.marker-animation').markerAnimation({
     color: '#fe9'
 });
 ```
+
 ### thickness
 Set the thickness of line
 ```javascript
@@ -89,6 +91,7 @@ $('.marker-animation').markerAnimation({
     thickness: '.6em'
 });
 ```
+
 ### duration
 Set the time to complete drawing a line
 ```javascript
@@ -96,6 +99,7 @@ $('.marker-animation').markerAnimation({
     duration: '2s'
 });
 ```
+
 ### delay
 Set the time to start drawing a line
 ```javascript
@@ -103,6 +107,7 @@ $('.marker-animation').markerAnimation({
     duration: '.1s'
 });
 ```
+
 ### font_weight
 Set the thickness of characters
 ```javascript
@@ -112,6 +117,7 @@ $('.marker-animation').markerAnimation({
 ```
 \[default = `bold`]  
 If you do not want to make it bold, please set `null`.
+
 ### repeat
 Set whether to repeat the animation
 ```javascript
@@ -120,6 +126,7 @@ $('.marker-animation').markerAnimation({
 });
 ```
 If this set to true, the animation will be executed again when it is off screen and displayed again.
+
 ### stripe
 Set whether to make it stripe design
 ```javascript
@@ -130,6 +137,14 @@ $('.marker-animation').markerAnimation({
 If this set to true, the animation will not be executed.
 
 ![stripe](https://raw.githubusercontent.com/technote-space/jquery.marker-animation/images/stripe.png)
+
+### rtl
+Set whether to support rtl
+```javascript
+$('.marker-animation').markerAnimation({
+    rtl: false
+});
+```
 
 ## How to set the value for each
 You can set options in the following format.   

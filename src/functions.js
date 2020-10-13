@@ -63,11 +63,29 @@ export const getCss = options => options.cssFilter(options.stripe ? getStripeCss
 
 /**
  * @param {object} options options
+ * @returns {string} direction
+ */
+const getDirection = options => options.rtl ? 'right' : 'left';
+
+/**
+ * @param {object} options options
+ * @returns {string} percentage
+ */
+const getStartPercentage = options => options.rtl ? '0' : '-100%';
+
+/**
+ * @param {object} options options
+ * @returns {string} percentage
+ */
+const getGoalPercentage  = options => options.rtl ? '100%' : '0';
+
+/**
+ * @param {object} options options
  * @returns {object} css
  */
 const getCommonCss = options => Object.assign({
   'display': 'inline',
-  'background-position': 'left 0 center',
+  'background-position': `${getDirection(options)} ${getGoalPercentage(options)} center`,
   'padding-bottom': options.padding_bottom,
 }, options.font_weight ? {
   'font-weight': options.font_weight,
@@ -82,7 +100,7 @@ const getMarkerCss = options => Object.assign({}, getCommonCss(options), {
   'background-repeat': 'repeat-x',
   'background-image': `linear-gradient(to right, rgba(255,255,255,0) 50%, ${options.color} 50%)`,
 }, isStatic(options) ? {
-  'background-position': 'left -100% center',
+  'background-position': `${getDirection(options)} ${getStartPercentage(options)} center`,
 } : {});
 
 /**
@@ -133,7 +151,7 @@ export const stop = target => {
 export const onInView = (target, options) => {
   target.stop(true, true).css({
     transition: `background-position ${options.duration} ${options.function} ${options.delay}`,
-    'background-position': 'left -100% center',
+    'background-position': `${getDirection(options)} ${getStartPercentage(options)} center`,
   });
   if (!options.repeat) {
     stop(target);
