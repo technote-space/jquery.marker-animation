@@ -75,7 +75,17 @@ $(() => {
 		<p>
 			Dolly'll never go away again
 		</p>
-
+		<p style="direction: rtl">
+			<bdo lang="ar" dir="rtl">
+				<span class="marker-animation" data-ma_rtl="true" data-ma_repeat="true">
+				هذا اختبار اللغة العربية.
+				</span>
+				هل هذه المكتبة تعمل بشكل صحيح؟
+				<span class="marker-animation" data-ma_rtl="true" data-ma_color="#00ffcc">
+				إذا كان لديك أي مشاكل ، يرجى الإبلاغ عنها.
+				</span>
+			</bdo>
+		</p>
 		<p>
 			<a class="btn btn-light-blue reset-animation">Reset</a>
 		</p>

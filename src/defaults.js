@@ -12,4 +12,5 @@ export const SETTINGS_DEFAULTS = {
   cssFilter: function(css) {
     return css;
   },
+  rtl: false,
 };
