@@ -162,9 +162,10 @@ describe('getCss', () => {
       duration: ZERO_SEC,
       'padding_bottom': 'a',
       cssFilter: css => css,
+      rtl: true,
     });
     expect(css).toHaveProperty('background-position');
-    expect(css['background-position']).toBe('left -100% center');
+    expect(css['background-position']).toBe('right 0 center');
   });
 
   it('should get stripe css', () => {
