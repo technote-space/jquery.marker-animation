@@ -35,6 +35,7 @@
   - [font_weight](#font_weight)
   - [repeat](#repeat)
   - [stripe](#stripe)
+  - [rtl](#rtl)
 - [個別に値を指定する方法](#%E5%80%8B%E5%88%A5%E3%81%AB%E5%80%A4%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95)
   - [例1: 色の変更](#%E4%BE%8B1-%E8%89%B2%E3%81%AE%E5%A4%89%E6%9B%B4)
   - [例2: 複数設定](#%E4%BE%8B2-%E8%A4%87%E6%95%B0%E8%A8%AD%E5%AE%9A)

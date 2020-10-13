@@ -35,6 +35,7 @@ jQuery plugin to add under line animation like highlighter.
   - [font_weight](#font_weight)
   - [repeat](#repeat)
   - [stripe](#stripe)
+  - [rtl](#rtl)
 - [How to set the value for each](#how-to-set-the-value-for-each)
   - [e.g. Change color](#eg-change-color)
   - [e.g Multiple options](#eg-multiple-options)
