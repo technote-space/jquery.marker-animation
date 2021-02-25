@@ -227,8 +227,8 @@ jobs:
         run: yarn install
       - name: Build
         run: |
-          git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci
-          bash travis-ci/bin/deploy/gh-pages.sh
+          git clone --depth=1 https://github.com/wp-content-framework/ci-helper.git ci-helper
+          bash ci-helper/bin/deploy/gh-pages.sh
         env:
           TRAVIS_BUILD_DIR: ${{ github.workspace }}
           GH_PAGES_TITLE: jQuery Marker Animation
