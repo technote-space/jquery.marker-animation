@@ -15,18 +15,18 @@
       "yarn install",
       "yarn build"
     ],
-    "bin:js-lint": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) ./travis-ci/bin/js/js-lint.sh",
-    "bin:js-test": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) ./travis-ci/bin/js/js-test.sh",
-    "bin:test": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash ./travis-ci/bin/test.sh",
+    "bin:js-lint": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) ./ci-helper/bin/js/js-lint.sh",
+    "bin:js-test": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) ./ci-helper/bin/js/js-test.sh",
+    "bin:test": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash ./ci-helper/bin/test.sh",
     "bin:download": [
-      "mkdir -p ./travis-ci/.git",
-      "chmod -R +w ./travis-ci/.git && rm -rdf ./travis-ci",
+      "mkdir -p ./ci-helper/.git",
+      "chmod -R +w ./ci-helper/.git && rm -rdf ./ci-helper",
       "rm -f ./tests/bootstrap.php ./.coveralls.yml ./phpcs.xml ./phpmd.xml phpunit.xml",
-      "git clone --depth=1 https://github.com/wp-content-framework/travis-ci.git travis-ci"
+      "git clone --depth=1 https://github.com/wp-content-framework/ci-helper.git ci-helper"
     ],
     "bin:update": [
-      "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash ./travis-ci/bin/update/package.sh"
+      "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) bash ./ci-helper/bin/update/package.sh"
     ],
-    "bin:gh-pages": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) GH_PAGES_TITLE='jQuery Marker Animation' bash ./travis-ci/bin/deploy/gh-pages.sh"
+    "bin:gh-pages": "TRAVIS_BUILD_DIR=$(cd $(dirname $0); pwd) GH_PAGES_TITLE='jQuery Marker Animation' bash ./ci-helper/bin/deploy/gh-pages.sh"
   }
 }

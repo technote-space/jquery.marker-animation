@@ -2,7 +2,7 @@
 node_modules/
 /coverage
 /build
-/travis-ci
+/ci-helper
 /gh-pages
 /.work
 !/bin
