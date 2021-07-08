@@ -28,17 +28,10 @@ jobs:
         run: echo "RUNNING=" >> $GITHUB_ENV
         if: "! env.GIT_DIFF"
 
-      - name: Get Yarn Cache Directory
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-        if: env.RUNNING
-      - name: Cache node dependencies
-        uses: actions/cache@v2
+      - uses: actions/setup-node@v2
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          node-version: 14
+          cache: yarn
         if: env.RUNNING
       - name: Install Package dependencies
         run: yarn install
@@ -57,7 +50,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        node: ['12', '14']
+        node: ['12', '14', '15']
     steps:
       - name: Set running flag
         run: echo "RUNNING=1" >> $GITHUB_ENV
@@ -74,10 +67,10 @@ jobs:
         run: echo "RUNNING=" >> $GITHUB_ENV
         if: "! env.GIT_DIFF"
       - name: Set running flag
-        if: "matrix.node == '12' && ! startsWith(github.ref, 'refs/tags/') && github.event.base_ref == format('refs/heads/{0}', github.event.repository.default_branch)"
+        if: "matrix.node == '14' && ! startsWith(github.ref, 'refs/tags/') && github.event.base_ref == format('refs/heads/{0}', github.event.repository.default_branch)"
         run: echo "RUNNING=1" >> $GITHUB_ENV
       - name: Set running flag
-        if: matrix.node == '12' && startsWith(github.ref, 'refs/tags/v')
+        if: matrix.node == '14' && startsWith(github.ref, 'refs/tags/v')
         run: echo "RUNNING=1" >> $GITHUB_ENV
       - name: Set running flag
         run: |
@@ -85,22 +78,10 @@ jobs:
             echo "RUNNING=" >> $GITHUB_ENV
           fi
 
-      - name: Setup node
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
-        if: env.RUNNING
-      - name: Get Yarn Cache Directory
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-        if: env.RUNNING
-      - name: Cache node dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: yarn
         if: env.RUNNING
       - name: Install Package dependencies
         run: yarn install
@@ -116,7 +97,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           COVERAGE_FILE: ./coverage/lcov.info
-        if: env.RUNNING && matrix.node == '12'
+        if: env.RUNNING && matrix.node == '14'
 
   package:
     name: Publish Package
@@ -159,29 +140,19 @@ jobs:
         if: env.RUNNING && matrix.target == 'gpr'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
           registry-url: https://registry.npmjs.org/
+          cache: yarn
         if: env.RUNNING && matrix.target == 'npm'
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
           registry-url: https://npm.pkg.github.com
+          cache: yarn
         if: env.RUNNING && matrix.target == 'gpr'
-      - name: Get Yarn Cache Directory
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-        if: env.RUNNING
-      - name: Cache node dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-        if: env.RUNNING
       - name: Install Package dependencies
         run: yarn install
         if: env.RUNNING
@@ -212,16 +183,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
-      - name: Get Yarn Cache Directory
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache node dependencies
-        uses: actions/cache@v2
+      - uses: actions/setup-node@v2
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          node-version: 14
+          cache: yarn
 
       - name: Install Package dependencies
         run: yarn install
@@ -248,16 +213,10 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v2
-      - name: Get Yarn Cache Directory
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache node dependencies
-        uses: actions/cache@v2
+      - uses: actions/setup-node@v2
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          node-version: 14
+          cache: yarn
 
       - name: Install Package dependencies
         run: yarn install
