@@ -38,11 +38,11 @@
     "update": "npx npm-check-updates -u && yarn install && yarn upgrade && yarn audit"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.0",
+    "@babel/core": "^7.18.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.18.0",
     "@babel/plugin-transform-react-jsx": "^7.17.12",
-    "@babel/plugin-transform-runtime": "^7.18.0",
-    "@babel/preset-env": "^7.18.0",
+    "@babel/plugin-transform-runtime": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@babel/register": "^7.17.7",
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
