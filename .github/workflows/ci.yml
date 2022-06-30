@@ -50,7 +50,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        node: ['14', '16', '17']
+        node: ['14', '16', '18']
     steps:
       - name: Set running flag
         run: echo "RUNNING=1" >> $GITHUB_ENV
