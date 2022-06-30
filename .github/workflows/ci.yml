@@ -50,7 +50,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        node: ['12', '14', '16']
+        node: ['14', '16', '18']
     steps:
       - name: Set running flag
         run: echo "RUNNING=1" >> $GITHUB_ENV
@@ -62,6 +62,7 @@ jobs:
           FILES: |
             yarn.lock
             jest.config.js
+            vite.config.ts
         if: "! contains(env.COMMIT_MESSAGE, '[skip ci]') && ! contains(env.COMMIT_MESSAGE, '[ci skip]')"
       - name: Set running flag
         run: echo "RUNNING=" >> $GITHUB_ENV
@@ -261,7 +262,7 @@ jobs:
     timeout-minutes: 3
     if: always()
     steps:
-      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: technote-space/workflow-conclusion-action@v3
       - uses: 8398a7/action-slack@v3
         with:
           status: failure
