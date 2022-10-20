@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Set running flag
         run: echo "RUNNING=1" >> $GITHUB_ENV
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: technote-space/get-git-comment-action@v1
       - uses: technote-space/get-diff-action@v6
         with:
@@ -28,7 +28,7 @@ jobs:
         run: echo "RUNNING=" >> $GITHUB_ENV
         if: "! env.GIT_DIFF"
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: yarn
@@ -54,7 +54,7 @@ jobs:
     steps:
       - name: Set running flag
         run: echo "RUNNING=1" >> $GITHUB_ENV
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: technote-space/get-git-comment-action@v1
       - uses: technote-space/get-diff-action@v6
         with:
@@ -79,7 +79,7 @@ jobs:
             echo "RUNNING=" >> $GITHUB_ENV
           fi
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
           cache: yarn
@@ -119,7 +119,7 @@ jobs:
           fi
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         if: env.RUNNING
       - name: Check package version
         uses: technote-space/package-version-check-action@v1
@@ -141,14 +141,14 @@ jobs:
         if: env.RUNNING && matrix.target == 'gpr'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
           cache: yarn
         if: env.RUNNING && matrix.target == 'npm'
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com
@@ -181,10 +181,10 @@ jobs:
     timeout-minutes: 10
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: yarn
@@ -213,8 +213,8 @@ jobs:
     timeout-minutes: 5
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: yarn
